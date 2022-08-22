@@ -8,10 +8,11 @@ public class Course {
     private String instructorsName;
 
 
-    public Course(String name, String code) {
-        this.toValidateArgumentsInput(name, code);
+    public Course(String name, String code, int estimatedTimeCourseCompletion) {
+        this.toValidateArgumentsInput(name, code, estimatedTimeCourseCompletion);
         this.name = name;
         this.code = code;
+        this.estimatedTimeCourseCompletion = estimatedTimeCourseCompletion;
 
     }
 
@@ -28,12 +29,14 @@ public class Course {
         return "ok";
     }
 
-    private void toValidateArgumentsInput(String name, String code) {
+    private void toValidateArgumentsInput(String name, String code, int estimatedTimeCourseCompletion) {
         //Refatorar para ENUMS
-        final String ERROR_MESSAGE_NAME = "Nome inválido.";
-        final String ERROR_MESSAGE_CODE = "Código inválido.";
+        final String ERROR_MESSAGE_NAME = "Invalid name.";
+        final String ERROR_MESSAGE_CODE = "Invalid code";
+        final String ERROR_MESSAGE_ESTIMATED_TIME_COURSE_COMPLETION = "Invalid time for course conclusion";
         Validate.validateName(name, ERROR_MESSAGE_NAME);
         Validate.validateCode(code, ERROR_MESSAGE_CODE);
+        Validate.validateNumberRange(estimatedTimeCourseCompletion, ERROR_MESSAGE_ESTIMATED_TIME_COURSE_COMPLETION);
 
     }
 }

@@ -4,6 +4,7 @@ public class Main {
         try {
             Validate.validateCode("a123-", "código inválido");
             Validate.validateName("Rui", "nome inválido");
+            Validate.validateNumberRange(0, "Tempo inválido");
         } catch (NullPointerException exception) {
             exception.printStackTrace();
         }
