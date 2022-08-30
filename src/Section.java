@@ -51,8 +51,8 @@ public class Section {
     }
 
     private void validateArgumentsInput(String name, String code) {
-        Validate.validateName(name, ErrorMessage.ERROR_MESSAGE_NAME.getErrorMessage());
-        Validate.validateCode(code, ErrorMessage.ERROR_MESSAGE_CODE.getErrorMessage());
+        Validate.validateWordNotNull(name, ErrorMessage.SECTION_NAME.getErrorMessage());
+        Validate.validateCode(code, ErrorMessage.SECTION_CODE.getErrorMessage());
     }
 
     @Override

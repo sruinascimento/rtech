@@ -1,18 +1,18 @@
-public class Explanation extends Activity {
+public class Explanation extends ActivityType {
 
-    private String text;
-
-    public Explanation(String title, String code, Section section, String text) {
-        super(title, code, section);
-        this.text = text;
+    public Explanation(String text) {
+        super.setText(text);
     }
 
     public String getText() {
-        return text;
+        return super.getText();
     }
 
     @Override
     public String toString() {
-        return super.toString() + "\ntext=" + text;
+        return "Explanation{" +
+                "explanation=" + super.getText() + '\'' +
+                "}\n";
     }
+
 }

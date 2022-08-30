@@ -1,20 +1,9 @@
-public class Question extends Activity {
+public class Question extends ActivityType {
 
-    private String formulation;
-    private String type;
+    private String type = "unique answer";
 
-    public Question(String title, String code, Section section, String formulation) {
-        super(title, code, section);
-        this.formulation = formulation;
-        this.type = "unique answer";
-    }
-
-    public String getFormulation() {
-        return formulation;
-    }
-
-    public void setFormulation(String formulation) {
-        this.formulation = formulation;
+    public Question(String enunciate) {
+        super.setText(enunciate);
     }
 
     public String getType() {
@@ -22,8 +11,15 @@ public class Question extends Activity {
     }
 
     public void setType(String type) {
-        Validate.validateQuestionType(type, ErrorMessage.ERROR_MESSAGE_QUESTION_TYPE.getErrorMessage());
+        Validate.validateQuestionType(type, ErrorMessage.QUESTION_TYPE.getErrorMessage());
         this.type = type;
     }
-    
+
+    @Override
+    public String toString() {
+        return "Question{" +
+                "enunciate='" + super.getText()+ '\'' +
+                " type='" + type + '\'' +
+                '}';
+    }
 }

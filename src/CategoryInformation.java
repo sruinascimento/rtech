@@ -8,8 +8,8 @@ public abstract class CategoryInformation {
 
 
     public CategoryInformation(String name, String code) {
-        Validate.validateName(name, ErrorMessage.ERROR_MESSAGE_NAME.getErrorMessage());
-        Validate.validateCode(code, ErrorMessage.ERROR_MESSAGE_CODE.getErrorMessage());
+        Validate.validateWordNotNull(name, ErrorMessage.CATEGORY_NAME.getErrorMessage());
+        Validate.validateCode(code, ErrorMessage.CATEGORY_CODE.getErrorMessage());
         this.name = name;
         this.code = code;
     }
@@ -61,4 +61,6 @@ public abstract class CategoryInformation {
     public void setOrder(int order) {
         this.order = order;
     }
+
+
 }

@@ -2,7 +2,7 @@ public class Validate {
 
 
     //Chamar as mensagens de erro, sem precisar passar por parâmetro?
-    public static void validateName(String word, String errorMessage) {
+    public static void validateWordNotNull(String word, String errorMessage) {
         if (isEmptyOrNull(word)) {
             throw new IllegalArgumentException(errorMessage);
         }
@@ -31,8 +31,8 @@ public class Validate {
     }
 
     public static void validateQuestionType(String typeQuestion, String errorMessage) {
-        
-        if (typeQuestion.equals("multiples choices") || !typeQuestion.equals("true or false")) {
+
+        if (!typeQuestion.equals("multiples choices") && !typeQuestion.equals("true or false")) {
             throw new IllegalArgumentException(errorMessage);
         }
     }

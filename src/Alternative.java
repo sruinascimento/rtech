@@ -7,7 +7,7 @@ public class Alternative {
     private Question question;
 
     public Alternative(String text, boolean correct, Question question) {
-        Validate.validateName(text, ErrorMessage.ERROR_MESSAGE_NAME.getErrorMessage());
+        Validate.validateWordNotNull(text, ErrorMessage.COURSE_NAME.getErrorMessage());
         this.text = text;
         this.correct = correct;
         this.question = question;

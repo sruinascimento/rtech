@@ -81,10 +81,10 @@ public class Course {
     }
 
     private void toValidateArgumentsInput(String name, String code, int estimatedTimeCourseCompletion, String instructorsName) {
-        Validate.validateName(name, ErrorMessage.ERROR_MESSAGE_NAME.getErrorMessage());
-        Validate.validateCode(code, ErrorMessage.ERROR_MESSAGE_CODE.getErrorMessage());
-        Validate.validateNumberRange(estimatedTimeCourseCompletion, ErrorMessage.ERROR_MESSAGE_ESTIMATED_TIME_COURSE_COMPLETION.getErrorMessage());
-        Validate.validateNameInstructor(instructorsName, ErrorMessage.ERROR_MESSAGE_INSTRUCTORS_NAME.getErrorMessage());
+        Validate.validateWordNotNull(name, ErrorMessage.COURSE_NAME.getErrorMessage());
+        Validate.validateCode(code, ErrorMessage.COURSE_CODE.getErrorMessage());
+        Validate.validateNumberRange(estimatedTimeCourseCompletion, ErrorMessage.ESTIMATED_TIME_COURSE_COMPLETION.getErrorMessage());
+        Validate.validateNameInstructor(instructorsName, ErrorMessage.INSTRUCTORS_NAME.getErrorMessage());
 
     }
 }

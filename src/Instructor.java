@@ -3,7 +3,7 @@ public class Instructor {
     private String name;
 
     public Instructor(String name) {
-        Validate.validateName(name, ErrorMessage.ERROR_MESSAGE_NAME.getErrorMessage());
+        Validate.validateWordNotNull(name, ErrorMessage.COURSE_NAME.getErrorMessage());
         this.name = name;
     }
 

@@ -1,16 +1,14 @@
-public class Video extends Activity {
+public class Video extends ActivityType {
 
-    private String url;
     private int minutes;
     private String description;
 
-    public Video(String title, String code, Section section, String url) {
-        super(title, code, section);
-        Validate.validateName(url, ErrorMessage.ERROR_MESSAGE_NAME.getErrorMessage());
+    public Video(String url) {
+        super.setText(url);
     }
 
     public String getUrl() {
-        return url;
+        return super.getText();
     }
 
     public int getMinutes() {
@@ -29,5 +27,12 @@ public class Video extends Activity {
         this.description = description;
     }
 
-    
+    @Override
+    public String toString() {
+        return "Video{" +
+                "url=" + this.getUrl()+
+                "minutes=" + minutes +
+                ", description='" + description + '\'' +
+                '}';
+    }
 }
