@@ -62,5 +62,15 @@ public abstract class CategoryInformation {
         this.order = order;
     }
 
-
+    @Override
+    public String toString() {
+        return "CategoryInformation{" +
+                "name='" + name + '\'' +
+                ", code='" + code + '\'' +
+                ", description='" + description + '\'' +
+                ", studyGuide='" + studyGuide + '\'' +
+                ", active=" + active +
+                ", order=" + order +
+                '}';
+    }
 }

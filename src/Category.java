@@ -21,6 +21,15 @@ public class Category extends  CategoryInformation {
     }
 
     public void setHtmlColorCode(String htmlColorCode) {
+        Validate.validateHtmlColorHexadecimal(htmlColorCode, ErrorMessage.HTML_COLOR_CODE.getErrorMessage());
         this.htmlColorCode = htmlColorCode;
+    }
+
+    @Override
+    public String toString() {
+        return "Category{" +
+                "iconPath='" + iconPath + '\'' +
+                ", htmlColorCode='" + htmlColorCode + '\'' +
+                '}' + super.toString();
     }
 }

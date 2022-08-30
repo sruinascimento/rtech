@@ -12,7 +12,7 @@ public class Explanation extends ActivityType {
     public String toString() {
         return "Explanation{" +
                 "explanation=" + super.getText() + '\'' +
-                "}\n";
+                "}";
     }
 
 }

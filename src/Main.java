@@ -20,19 +20,27 @@ public class Main {
             var explanation = new Explanation("homeworke 10 points");
             System.out.println(explanation);
             var video = new Video("http://www.video.com");
+            video.setDescription("Explanation video");
             var question = new Question("Choose the the option which show the class concept");
             question.setType("multiples choices");
-            video.setDescription("Explanation video");
 
             activity.setType(video);
             System.out.println(activity);
 
+            var alternative = new Alternative("is a template used to create objects and to define object data types and methods.", true, question);
+            alternative.setOrder(1);
+            System.out.println(alternative);
 
+            var category = new Category("Programming", "27-c");
+            category.setHtmlColorCode("#CCCCCC");
+            category.setIconPath("../images/icon.jpg");
+            System.out.println(category);
 
+            var subCategory = new SubCategory("Programming A", "001", category);
+            System.out.println(subCategory);
         } catch (IllegalArgumentException exception) {
             exception.printStackTrace();
         }
 
-        System.out.println("Após o tratamento de erros");
     }
 }

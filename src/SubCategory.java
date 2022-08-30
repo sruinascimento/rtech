@@ -14,4 +14,11 @@ public class SubCategory extends CategoryInformation {
     public void setCategory(Category category) {
         this.category = category;
     }
+
+    @Override
+    public String toString() {
+        return "SubCategory{" +
+                "category=" + category +
+                '}' + super.toString();
+    }
 }

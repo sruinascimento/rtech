@@ -7,7 +7,7 @@ public class Alternative {
     private Question question;
 
     public Alternative(String text, boolean correct, Question question) {
-        Validate.validateWordNotNull(text, ErrorMessage.COURSE_NAME.getErrorMessage());
+        Validate.validateWordNotNull(text, ErrorMessage.ALTERNATIVE_TEXT.getErrorMessage());
         this.text = text;
         this.correct = correct;
         this.question = question;
@@ -51,5 +51,16 @@ public class Alternative {
 
     public void setQuestion(Question question) {
         this.question = question;
+    }
+
+    @Override
+    public String toString() {
+        return "Alternative{" +
+                "text='" + text + '\'' +
+                ", order=" + order +
+                ", correct=" + correct +
+                ", justification='" + justification + '\'' +
+                ", question=" + question +
+                '}';
     }
 }

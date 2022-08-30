@@ -10,7 +10,9 @@ public enum ErrorMessage {
     CATEGORY_NAME("Invalid category name"),
     CATEGORY_CODE("Invalid category code"),
     INSTRUCTORS_NAME("Invalid instructor's name"),
-    QUESTION_TYPE("Invalid question type");
+    QUESTION_TYPE("Invalid question type"),
+    ALTERNATIVE_TEXT("Invalid text alternative"),
+    HTML_COLOR_CODE("Invalid html color code");
 
     private String errorMessage;
 

@@ -36,5 +36,11 @@ public class Validate {
             throw new IllegalArgumentException(errorMessage);
         }
     }
+
+    public static void validateHtmlColorHexadecimal(String htmlColor, String erroMesssage) {
+        if (!htmlColor.matches("#[A-F0-9]{6}")) {
+            throw new IllegalArgumentException(erroMesssage);
+        }
+    }
     
 }
