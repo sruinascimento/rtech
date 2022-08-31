@@ -7,7 +7,7 @@ public abstract class ActivityType {
     }
 
     protected void setText(String text) {
-        Validate.validateWordNotNull(text,  ErrorMessage.ACTIVITY_TYPE_TEXT.getErrorMessage());
+        Validate.validateWordNotNull(text,  ErrorMessage.ACTIVITY_TYPE_TEXT);
         this.text = text;
     }
 

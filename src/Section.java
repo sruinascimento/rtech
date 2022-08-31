@@ -8,7 +8,8 @@ public class Section {
     private Course course;
 
     public Section(String name, String code, Course course) {
-        this.validateArgumentsInput(name, code);
+        Validate.validateWordNotNull(name, ErrorMessage.SECTION_NAME);
+        Validate.validateCode(code, ErrorMessage.SECTION_CODE);
         this.name = name;
         this.code = code;
         this.course = course;
@@ -48,11 +49,6 @@ public class Section {
 
     public Course getCourse() {
         return this.course;
-    }
-
-    private void validateArgumentsInput(String name, String code) {
-        Validate.validateWordNotNull(name, ErrorMessage.SECTION_NAME.getErrorMessage());
-        Validate.validateCode(code, ErrorMessage.SECTION_CODE.getErrorMessage());
     }
 
     @Override

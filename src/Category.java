@@ -21,7 +21,7 @@ public class Category extends  CategoryInformation {
     }
 
     public void setHtmlColorCode(String htmlColorCode) {
-        Validate.validateHtmlColorHexadecimal(htmlColorCode, ErrorMessage.HTML_COLOR_CODE.getErrorMessage());
+        Validate.validateHtmlColorHexadecimal(htmlColorCode, ErrorMessage.HTML_COLOR_CODE);
         this.htmlColorCode = htmlColorCode;
     }
 

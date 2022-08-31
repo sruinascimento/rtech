@@ -7,8 +7,8 @@ public class Activity {
     private Section section;
 
     public Activity(String title, String code, Section section) {
-        Validate.validateWordNotNull(title, ErrorMessage.ACTIVITY_NAME.getErrorMessage());
-        Validate.validateCode(code, ErrorMessage.ACTIVITY_CODE.getErrorMessage());
+        Validate.validateWordNotNull(title, ErrorMessage.ACTIVITY_NAME);
+        Validate.validateCode(code, ErrorMessage.ACTIVITY_CODE);
         this.title = title;
         this.code = code;
         this.section = section;

@@ -11,7 +11,7 @@ public class Question extends ActivityType {
     }
 
     public void setType(String type) {
-        Validate.validateQuestionType(type, ErrorMessage.QUESTION_TYPE.getErrorMessage());
+        Validate.validateQuestionType(type, ErrorMessage.QUESTION_TYPE);
         this.type = type;
     }
 

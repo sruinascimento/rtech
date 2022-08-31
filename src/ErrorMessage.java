@@ -14,14 +14,14 @@ public enum ErrorMessage {
     ALTERNATIVE_TEXT("Invalid text alternative"),
     HTML_COLOR_CODE("Invalid html color code");
 
-    private String errorMessage;
+    private String message;
 
     ErrorMessage(String errorMessage) {
-        this.errorMessage = errorMessage;
+        this.message = errorMessage;
     }
 
-    public String getErrorMessage() {
-        return errorMessage;
+    public String getMessage() {
+        return message;
     }
 
 

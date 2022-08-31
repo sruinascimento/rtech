@@ -8,8 +8,8 @@ public abstract class CategoryInformation {
 
 
     public CategoryInformation(String name, String code) {
-        Validate.validateWordNotNull(name, ErrorMessage.CATEGORY_NAME.getErrorMessage());
-        Validate.validateCode(code, ErrorMessage.CATEGORY_CODE.getErrorMessage());
+        Validate.validateWordNotNull(name, ErrorMessage.CATEGORY_NAME);
+        Validate.validateCode(code, ErrorMessage.CATEGORY_CODE);
         this.name = name;
         this.code = code;
     }

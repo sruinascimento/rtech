@@ -6,12 +6,16 @@ public class Course {
     private boolean privateVisibility;
     private String targetPublic;
     private Instructor instructor;
-    private String courseSyllabus;
+    private String syllabus;
     private String developedSkills;
+    private SubCategory subCategory;
 
 
     public Course(String name, String code, int estimatedTimeCourseCompletion, String instructorsName) {
-        this.toValidateArgumentsInput(name, code, estimatedTimeCourseCompletion, instructorsName);
+        Validate.validateWordNotNull(name, ErrorMessage.COURSE_NAME);
+        Validate.validateCode(code, ErrorMessage.COURSE_CODE);
+        Validate.validateNumberRange(estimatedTimeCourseCompletion, ErrorMessage.ESTIMATED_TIME_COURSE_COMPLETION);
+        Validate.validateNameInstructor(instructorsName, ErrorMessage.INSTRUCTORS_NAME);
         this.name = name;
         this.code = code;
         this.estimatedTimeCourseCompletion = estimatedTimeCourseCompletion;
@@ -50,12 +54,12 @@ public class Course {
         return this.instructor;
     }
 
-    public String getCourseSyllabus() {
-        return this.courseSyllabus;
+    public String getSyllabus() {
+        return this.syllabus;
     }
 
-    public void setCourseSyllabus(String courseSyllabus) {
-        this.courseSyllabus = courseSyllabus;
+    public void setSyllabus(String syllabus) {
+        this.syllabus = syllabus;
     }
 
     public String getDevelopedSkills() {
@@ -64,6 +68,14 @@ public class Course {
 
     public void setDevelopedSkills(String developedSkills) {
         this.developedSkills = developedSkills;
+    }
+
+    public SubCategory getSubCategory() {
+        return subCategory;
+    }
+
+    public void setSubCategory(SubCategory subCategory) {
+        this.subCategory = subCategory;
     }
 
     @Override
@@ -75,16 +87,9 @@ public class Course {
                 ", privateVisibility=" + this.privateVisibility +
                 ", targetPublic='" + this.targetPublic + '\'' +
                 ", instructor=" + this.instructor.getName() +
-                ", courseSyllabus='" + this.courseSyllabus + '\'' +
+                ", courseSyllabus='" + this.syllabus + '\'' +
                 ", developedSkills='" + this.developedSkills + '\'' +
-                '}';
+                this.subCategory.toString() +  '}';
     }
 
-    private void toValidateArgumentsInput(String name, String code, int estimatedTimeCourseCompletion, String instructorsName) {
-        Validate.validateWordNotNull(name, ErrorMessage.COURSE_NAME.getErrorMessage());
-        Validate.validateCode(code, ErrorMessage.COURSE_CODE.getErrorMessage());
-        Validate.validateNumberRange(estimatedTimeCourseCompletion, ErrorMessage.ESTIMATED_TIME_COURSE_COMPLETION.getErrorMessage());
-        Validate.validateNameInstructor(instructorsName, ErrorMessage.INSTRUCTORS_NAME.getErrorMessage());
-
-    }
 }
