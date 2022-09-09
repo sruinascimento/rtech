@@ -39,6 +39,7 @@ public class Main {
             var subCategory = new SubCategory("Programming A", "001", category);
 //            System.out.println(subCategory);
 
+            
             programmingJava.setSubCategory(subCategory);
             System.out.println(programmingJava);
 
