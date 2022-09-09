@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="rtech:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/rtech_jar</output-path>
+    <root id="archive" name="rtech.jar">
+      <element id="module-output" name="rtech" />
+    </root>
+  </artifact>
+</component>
