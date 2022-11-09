@@ -1,3 +1,5 @@
+package br.com.rtech.model;
+
 public class Instructor {
 
     private String name;
@@ -13,7 +15,7 @@ public class Instructor {
 
     @Override
     public String toString() {
-        return  "#### Instructor ####\n" +
+        return  "#### br.com.rtech.model.Instructor ####\n" +
                 "Name: " + this.name + "\n";
     }
 }

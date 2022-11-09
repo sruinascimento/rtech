@@ -1,3 +1,5 @@
+package br.com.rtech.model;
+
 public class Category extends  CategoryInformation {
 
     private String iconPath;
@@ -27,7 +29,7 @@ public class Category extends  CategoryInformation {
 
     @Override
     public String toString() {
-        return "Category{" +
+        return "br.com.rtech.model.Category{" +
                 "iconPath='" + iconPath + '\'' +
                 ", htmlColorCode='" + htmlColorCode + '\'' +
                 '}' + super.toString();

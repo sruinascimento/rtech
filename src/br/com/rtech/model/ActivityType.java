@@ -1,3 +1,5 @@
+package br.com.rtech.model;
+
 public abstract class ActivityType {
 
     private String text;
@@ -13,7 +15,7 @@ public abstract class ActivityType {
 
     @Override
     public String toString() {
-        return "ActivityType{" +
+        return "br.com.rtech.model.ActivityType{" +
                 "text='" + text + '\'' +
                 '}';
     }

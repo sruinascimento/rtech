@@ -1,3 +1,5 @@
+package br.com.rtech.model;
+
 public class Course {
 
     private String name;
@@ -80,7 +82,7 @@ public class Course {
 
     @Override
     public String toString() {
-        return "Course{" +
+        return "br.com.rtech.model.Course{" +
                 "name='" + this.name + '\'' +
                 ", code='" + this.code + '\'' +
                 ", estimatedTimeCourseCompletion=" + this.estimatedTimeCourseCompletion +

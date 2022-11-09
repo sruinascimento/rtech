@@ -1,3 +1,5 @@
+package br.com.rtech.model;
+
 public class Video extends ActivityType {
 
     private int minutes;
@@ -29,7 +31,7 @@ public class Video extends ActivityType {
 
     @Override
     public String toString() {
-        return "Video{" +
+        return "br.com.rtech.model.Video{" +
                 "url=" + this.getUrl()+
                 "minutes=" + minutes +
                 ", description='" + description + '\'' +

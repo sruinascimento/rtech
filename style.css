@@ -1,0 +1,82 @@
+h1 {
+    text-align: center;
+    font-weight: bold;
+    font-size: 30px;
+    padding: 20px;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    gap: 1%;
+}
+
+section {
+    width: 45%;
+}
+
+section img {
+    width: 100px;
+    height: 100px;
+}
+
+.container-icon-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container-icon-title h2 {
+    font-size: 25px;
+}
+.element-description-category {
+    width: 90%;
+    margin: 10px auto;
+    text-align: justify;
+    font-size: 18px;
+}
+
+.content-category-subcategory {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.content-hour-and-course-quantity {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    font-size: 18px;
+}
+
+
+/*section {*/
+/*    display: flex;*/
+/*    vertical-align: middle;*/
+/*    flex-direction: column;*/
+/*    width: 40%;*/
+
+/*}*/
+
+/*.container-icon-title {*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*    justify-content: center;*/
+/*    !*gap: 30%;*!*/
+/*}*/
+
+/*section img {*/
+/*    width: 100px;*/
+/*    height: 100px;*/
+/*}*/
+
+/*section h2 {*/
+/*    font-size: 25px;*/
+/*    !*font-weight: bold;*!*/
+/*    vertical-align: middle;*/
+/*}*/
+
+/*.content-category-subcategory {*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    justify-content: center;*/
+/*}*/

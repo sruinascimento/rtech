@@ -1,3 +1,5 @@
+package br.com.rtech.model;
+
 public enum ErrorMessage {
     COURSE_NAME("Invalid course name"),
     COURSE_CODE("Invalid course code"),
