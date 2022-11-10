@@ -1,8 +1,35 @@
+body {
+    font-family: 'Poppins';
+    background-color: rgb(21, 28, 48);
+}
+
+header, main {
+    margin-bottom: 10px;
+}
+
+
 h1 {
     text-align: center;
     font-weight: bold;
-    font-size: 30px;
+    font-size: 48px;
     padding: 20px;
+    color: rgb(39, 120, 255);
+    font-family: 'Orbitron', sans-serif;
+}
+
+h2{
+    font-weight: bold;
+}
+
+.content-category-subcategory h3 {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 10px 0px;
+}
+
+.style-subtitle{
+    font-weight: 700;
+    margin: 5px 0;
 }
 
 main {
@@ -13,11 +40,12 @@ main {
 
 section {
     width: 45%;
+    border-radius: 20px;
+    padding-bottom: 20px;
 }
 
 section img {
-    width: 100px;
-    height: 100px;
+    width: 75px;
 }
 
 .container-icon-title {
@@ -31,7 +59,7 @@ section img {
 }
 .element-description-category {
     width: 90%;
-    margin: 10px auto;
+    margin: 10px auto 30px auto;
     text-align: justify;
     font-size: 18px;
 }
@@ -49,34 +77,42 @@ section img {
 }
 
 
-/*section {*/
-/*    display: flex;*/
-/*    vertical-align: middle;*/
-/*    flex-direction: column;*/
-/*    width: 40%;*/
+.content-justify {
+    text-align: justify;
+}
 
-/*}*/
+.content-banner img{
+    width: 100%;
+    height: 270px;
+    object-fit: cover;
+    border-radius: 20px 20px 0px 0px;
+}
 
-/*.container-icon-title {*/
-/*    display: flex;*/
-/*    align-items: center;*/
-/*    justify-content: center;*/
-/*    !*gap: 30%;*!*/
-/*}*/
+footer {
+    padding: 20px 0;
+    text-align: center;
+    color: rgb(39, 120, 255);
+    font-size: 18px;
+    font-weight: 600;
+}
 
-/*section img {*/
-/*    width: 100px;*/
-/*    height: 100px;*/
-/*}*/
+footer p {
+    margin-bottom: 10px;
+}
 
-/*section h2 {*/
-/*    font-size: 25px;*/
-/*    !*font-weight: bold;*!*/
-/*    vertical-align: middle;*/
-/*}*/
+.content-contact{
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+}
 
-/*.content-category-subcategory {*/
-/*    display: flex;*/
-/*    flex-direction: column;*/
-/*    justify-content: center;*/
-/*}*/
+footer a {
+    text-decoration: none;
+    color: rgb(39, 120, 255);
+    transition: 0.7s;
+}
+
+footer a:hover {
+    color: rgb(39, 170, 255);
+}
+
