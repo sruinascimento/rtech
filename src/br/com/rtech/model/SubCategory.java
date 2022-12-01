@@ -2,17 +2,17 @@ package br.com.rtech.model;
 
 public class SubCategory extends CategoryInformation implements Comparable<SubCategory> {
 
-    private String category;
+    private Category category;
 
     public SubCategory(String name, String code) {
         super(name, code);
     }
 
-    public String getCategory() {
+    public Category getCategory() {
         return category;
     }
 
-    public void setCategory(String category) {
+    public void setCategory(Category category) {
         this.category = category;
     }
 

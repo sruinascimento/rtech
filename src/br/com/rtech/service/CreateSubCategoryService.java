@@ -1,13 +1,15 @@
 package br.com.rtech.service;
 
+import br.com.rtech.model.Category;
 import br.com.rtech.model.SubCategory;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class CreateSubCategoryService {
     //, List<Category> categories param
-    public static List<SubCategory> generateObjecSubCategory(String path) {
+    public static List<SubCategory> generateObjecSubCategory(String path, Map<String, Category> categories) {
         List<SubCategory> subCategories = new ArrayList<>();
         List<String[]> atributesSubCategory = ExtractorAtributesService.getAtributes(path);
 
@@ -19,17 +21,15 @@ public class CreateSubCategoryService {
             String status = atributes[4];
             String categoryCode = atributes[5];
 
-            try {
-                SubCategory subCategory = new SubCategory(name, code);
-                subCategory.setOrder(Integer.parseInt(order));
-                subCategory.setDescription(description);
-                if (status.equals("ATIVA")) subCategory.setActive(true);
-                if (status.equals("INATIVA")) subCategory.setActive(false);
-                subCategory.setCategory(categoryCode);
-                subCategories.add(subCategory);
-            } catch (IllegalArgumentException exception) {
-                exception.printStackTrace();
-            }
+            Category category = categories.get(categoryCode);
+            if (category == null) throw new RuntimeException("Invalid category: " + categoryCode);
+            SubCategory subCategory = new SubCategory(name, code);
+            subCategory.setOrder(order);
+            subCategory.setDescription(description);
+            if (status.equals("ATIVA")) subCategory.setActive(true);
+            if (status.equals("INATIVA")) subCategory.setActive(false);
+            subCategory.setCategory(category);
+            subCategories.add(subCategory);
         }
 
         return subCategories;

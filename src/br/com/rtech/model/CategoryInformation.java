@@ -64,6 +64,12 @@ public abstract class CategoryInformation {
         this.order = order;
     }
 
+    public void setOrder(String order) {
+        if (order != null && !order.trim().equals("")) {
+            this.setOrder(Integer.parseInt(order));
+        }
+    }
+
     @Override
     public String toString() {
         return "br.com.rtech.model.CategoryInformation{" +

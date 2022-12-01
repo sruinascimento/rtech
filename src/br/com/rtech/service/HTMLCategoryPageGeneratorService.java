@@ -92,7 +92,7 @@ public class HTMLCategoryPageGeneratorService {
     private static int getTotalCoursesByCategory(List<Course> courses, Category category) {
         int total = 0;
         for (Course course: courses) {
-            if ( course.getSubCategory().getCategory().equals(category.getCode()) ) total++;
+            if ( course.getSubCategory().getCategory().getCode().equals(category.getCode()) ) total++;
         }
         return total;
     }
@@ -109,7 +109,7 @@ public class HTMLCategoryPageGeneratorService {
     private static int getTotalHoursCourseByCategory(List<Course> courses, Category category) {
         int total = 0;
         for (Course course: courses) {
-            if ( course.getSubCategory().getCategory().equals(category.getCode())) total += course.getEstimatedTimeCourseCompletion();
+            if ( course.getSubCategory().getCategory().getCode().equals(category.getCode())) total += course.getEstimatedTimeCourseCompletion();
         }
         return total;
     }
@@ -126,7 +126,7 @@ public class HTMLCategoryPageGeneratorService {
     private static String getHtmlSubCategory(List<SubCategory> subCategories, Category category, List<Course> courses) {
         String subCategoriesHTML = "";
         for (SubCategory subCategory: subCategories) {
-            if (subCategory.isActive() && subCategory.getCategory().equals(category.getCode())) {
+            if (subCategory.isActive() && subCategory.getCategory().getCode().equals(category.getCode())) {
                 subCategoriesHTML += """
                                     <h3> Subcategoria %s </h3>
                                     <p class="style-subtitle"> Descrição </p>

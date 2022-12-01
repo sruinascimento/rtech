@@ -24,7 +24,7 @@ public class CreateCategoryService {
                 String color = atributes[6];
                 try {
                     Category category = new Category(name, code);
-                    category.setOrder(Integer.parseInt(order));
+                    category.setOrder(order);
                     category.setDescription(description);
                     if (status.equals("ATIVA")) category.setActive(true);
                     if (status.equals("INATIVA")) category.setActive(false);
@@ -32,7 +32,7 @@ public class CreateCategoryService {
                     category.setHtmlColorCode(color);
                     categories.add(category);
                 } catch (IllegalArgumentException exception) {
-                    exception.printStackTrace();
+                  throw new RuntimeException(exception);
                 }
         }
         return categories;
