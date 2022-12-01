@@ -10,13 +10,11 @@ import java.util.Scanner;
 
 public class CreateCategoryService {
 
-    public static List<Category> generateObjectCategory(String pathFile) {
+    public static List<Category> generateObjectCategory(String path) {
         List<Category> categories = new ArrayList<>();
-        try (Scanner scanner = new Scanner(new File(pathFile))){
-            //skip the labels
-            scanner.nextLine();
-            while (scanner.hasNext()) {
-                String[] atributes = scanner.nextLine().split(",");
+        List<String[]> categoryAtributes = ExtractorAtributesService.getAtributes(path);
+
+        for (String[] atributes : categoryAtributes) {
                 String name = atributes[0];
                 String code = atributes[1];
                 String order = atributes[2];
@@ -33,13 +31,9 @@ public class CreateCategoryService {
                     category.setIconPath(icon);
                     category.setHtmlColorCode(color);
                     categories.add(category);
-                } catch (Exception ignored) {
+                } catch (IllegalArgumentException exception) {
+                    exception.printStackTrace();
                 }
-
-            }
-
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
         }
         return categories;
     }

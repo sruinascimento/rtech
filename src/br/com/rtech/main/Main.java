@@ -1,9 +1,9 @@
-package br.com.rtech.model;
+package br.com.rtech.main;
 
-import br.com.rtech.service.CreateCategoryService;
-import br.com.rtech.service.CreateCourseService;
-import br.com.rtech.service.CreateSubCategoryService;
-import br.com.rtech.service.HTMLCategoryPageGeneratorService;
+import br.com.rtech.model.Category;
+import br.com.rtech.model.Course;
+import br.com.rtech.model.SubCategory;
+import br.com.rtech.service.*;
 
 import java.util.Collections;
 import java.util.Comparator;
@@ -19,6 +19,12 @@ public class Main {
         List<Course> courses = CreateCourseService.generateObjectCourse("files/planilha-dados-escola - Curso.csv", subCategories);
         HTMLCategoryPageGeneratorService.generateCategoryPage(categories, courses, subCategories);
 
+//      categories.forEach(System.out::println);
+//        categories.stream().filter(category -> !category.isActive()).forEach(System.out::println);
+
+
+//        ExtractorAtributesService.getAtributes("files/planilha-dados-escola - Categoria.csv");
+//        CreateSubCategoryService.generateObjecSubCategory("files/planilha-dados-escola - Subcategoria.csv");
 
 
     }

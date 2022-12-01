@@ -3,30 +3,26 @@ package br.com.rtech.service;
 import br.com.rtech.model.Course;
 import br.com.rtech.model.SubCategory;
 
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class CreateCourseService {
     public static List<Course> generateObjectCourse(String path, List<SubCategory> subCategories) {
         List<Course> courses = new ArrayList<>();
-        try(Scanner scanner = new Scanner(new File(path))) {
-            // skip the labels
-            scanner.nextLine();
-            while (scanner.hasNext()) {
-                String[] atributesCourse = scanner.nextLine().split(",");
-                String name = atributesCourse[0];
-                String code = atributesCourse[1];
-                int estimatedTimeCourseCompletion = Integer.parseInt(atributesCourse[2]);
-                String visibility = atributesCourse[3];
-                String targetPublic = atributesCourse[4];
-                String instructorsName = atributesCourse[5];
-                String syllabus = atributesCourse[6];
-                String skills = atributesCourse[7];
-                String subcategoryCode = atributesCourse[8];
-                for (SubCategory subCategory: subCategories) {
+        List<String[]> courseAtributes = ExtractorAtributesService.getAtributes(path);
+
+        for (String[] atributes : courseAtributes) {
+            try {
+                String name = atributes[0];
+                String code = atributes[1];
+                int estimatedTimeCourseCompletion = Integer.parseInt(atributes[2]);
+                String visibility = atributes[3];
+                String targetPublic = atributes[4];
+                String instructorsName = atributes[5];
+                String syllabus = atributes[6];
+                String skills = atributes[7];
+                String subcategoryCode = atributes[8];
+                for (SubCategory subCategory : subCategories) {
                     try {
                         if (subcategoryCode.equals(subCategory.getCode())) {
                             Course course = new Course(name, code, estimatedTimeCourseCompletion, instructorsName);
@@ -38,14 +34,14 @@ public class CreateCourseService {
                             course.setSubCategory(subCategory);
                             courses.add(course);
                         }
-                    } catch (IllegalArgumentException ignored) {
+                    } catch (IllegalArgumentException exception) {
+                        exception.printStackTrace();
                     }
-
                 }
+            } catch (ArrayIndexOutOfBoundsException exception) {
+                exception.printStackTrace();
             }
-
-        } catch (FileNotFoundException | NumberFormatException | ArrayIndexOutOfBoundsException ignored) {
         }
-        return  courses;
+        return courses;
     }
 }
