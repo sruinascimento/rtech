@@ -1,3 +1,5 @@
+package br.com.rtech.model;
+
 public class Question extends ActivityType {
 
     private String type = "unique answer";
@@ -17,7 +19,7 @@ public class Question extends ActivityType {
 
     @Override
     public String toString() {
-        return "Question{" +
+        return "br.com.rtech.model.Question{" +
                 "enunciate='" + super.getText()+ '\'' +
                 " type='" + type + '\'' +
                 '}';

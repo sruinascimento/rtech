@@ -1,3 +1,5 @@
+package br.com.rtech.model;
+
 public class Alternative {
     
     private String text;
@@ -55,7 +57,7 @@ public class Alternative {
 
     @Override
     public String toString() {
-        return "Alternative{" +
+        return "br.com.rtech.model.Alternative{" +
                 "text='" + text + '\'' +
                 ", order=" + order +
                 ", correct=" + correct +

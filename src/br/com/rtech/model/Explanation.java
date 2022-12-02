@@ -1,3 +1,5 @@
+package br.com.rtech.model;
+
 public class Explanation extends ActivityType {
 
     public Explanation(String text) {
@@ -10,7 +12,7 @@ public class Explanation extends ActivityType {
 
     @Override
     public String toString() {
-        return "Explanation{" +
+        return "br.com.rtech.model.Explanation{" +
                 "explanation=" + super.getText() + '\'' +
                 "}";
     }

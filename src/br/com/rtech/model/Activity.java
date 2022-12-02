@@ -1,3 +1,5 @@
+package br.com.rtech.model;
+
 public class Activity {
 
     private String title;
@@ -44,7 +46,7 @@ public class Activity {
 
     @Override
     public String toString() {
-        return "Activity{" +
+        return "br.com.rtech.model.Activity{" +
                 "title='" + title + '\'' +
                 ", code='" + code + '\'' +
                 ", inactive=" + inactive +

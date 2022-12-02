@@ -1,3 +1,5 @@
+package br.com.rtech.model;
+
 public class Validate {
 
     //Chamar as mensagens de erro, sem precisar passar por parâmetro?
@@ -37,7 +39,7 @@ public class Validate {
     }
 
     public static void validateHtmlColorHexadecimal(String htmlColor, ErrorMessage erroMesssage) {
-        if (!htmlColor.matches("#[A-F0-9]{6}")) {
+        if (!htmlColor.matches("#[A-Fa-f0-9]{6}")) {
             throw new IllegalArgumentException(erroMesssage.getMessage());
         }
     }

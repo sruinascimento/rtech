@@ -1,3 +1,5 @@
+package br.com.rtech.model;
+
 public class Section {
 
     private String name;
@@ -53,7 +55,7 @@ public class Section {
 
     @Override
     public String toString() {
-        return "Section{" +
+        return "br.com.rtech.model.Section{" +
                 "name='" + name + '\'' +
                 ", code='" + code + '\'' +
                 ", order=" + order +
