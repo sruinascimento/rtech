@@ -11,7 +11,6 @@ public class Main {
 
     public static void main(String[] args) {
         List<Category> categories = CreateCategoryService.generateObjectCategory("files/planilha-dados-escola - Categoria.csv");
-
         Map<String, Category> categoriesByCode = new HashMap<>();
         for (Category category : categories) {
             categoriesByCode.put(category.getCode(), category);
@@ -29,13 +28,16 @@ public class Main {
         List<Course> courses = CreateCourseService.generateObjectCourse("files/planilha-dados-escola - Curso.csv", subcategoriesByCode);
         HTMLCategoryPageGeneratorService.generateCategoryPage(categories, courses, subCategories);
 
-//      categories.forEach(System.out::println);
-//        categories.stream().filter(category -> !category.isActive()).forEach(System.out::println);
-
-
-//        ExtractorAtributesService.getAtributes("files/planilha-dados-escola - Categoria.csv");
-//        CreateSubCategoryService.generateObjecSubCategory("files/planilha-dados-escola - Subcategoria.csv");
-
+        System.out.println("Subcateries hasn't description");
+        UtilityMethodService.getSubcategoriesHasntDescription(subCategories).forEach(System.out::println);
+        System.out.println("Active Categories");
+        UtilityMethodService.getActiveCategories(categories).forEach(System.out::println);
+        System.out.println("Any private course? " + UtilityMethodService.isAnyPrivateCourse(courses));
+        System.out.println("Instructor's name");
+        UtilityMethodService.getUniqueInstructrorsName(courses).forEach(System.out::println);
+        System.out.println("Total active subcategories with description = " + UtilityMethodService.getTotalActiveSubcategoriesWithDescription(subCategories));
+        System.out.println("Instructors and total courses");
+        UtilityMethodService.getInstructorsAndYoursTotalOfCourse(courses).forEach((name, total) -> System.out.println(name + " -> " + total));
 
     }
 }

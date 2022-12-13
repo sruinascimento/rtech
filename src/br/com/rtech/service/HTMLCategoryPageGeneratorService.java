@@ -66,9 +66,11 @@ public class HTMLCategoryPageGeneratorService {
     private static String getDivBanner(String categoryName) {
         String bannerProgramming = "https://i.imgur.com/TGd1LCW.png";
         String bannerDevOps = "https://i.imgur.com/VaUu6hI.png";
+        String bannerBusiness = "https://i.imgur.com/ZLPSIjs.png";
         String categoryNameSelected = "";
         if (categoryName.equals("Programação")) categoryNameSelected = bannerProgramming;
         if (categoryName.equals("DevOps")) categoryNameSelected = bannerDevOps;
+        if(categoryName.equals("Business")) categoryNameSelected = bannerBusiness;
         return """
                 <div class="content-banner">
                     <img src="%s">
