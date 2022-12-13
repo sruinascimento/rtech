@@ -4,9 +4,9 @@ import br.com.rtech.model.Category;
 import br.com.rtech.model.Course;
 import br.com.rtech.model.SubCategory;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class UtilityMethodService {
 
@@ -41,16 +41,7 @@ public class UtilityMethodService {
     }
 
     public static Map<String, Long> getInstructorsAndYoursTotalOfCourse(List<Course> courses) {
-
-        List<String> instructorsName = getUniqueInstructrorsName(courses);
-        Map<String, Long> totalCoursesByInstructor = new HashMap<>();
-        for (String name : instructorsName) {
-            long totalCourses = courses.stream()
-                    .filter(course -> course.getInstructor().getName().equals(name))
-                    .count();
-            totalCoursesByInstructor.put(name, totalCourses);
-        }
-
-        return totalCoursesByInstructor;
+        return courses.stream()
+                .collect(Collectors.groupingBy(course -> course.getInstructor().getName(), Collectors.counting()));
     }
 }

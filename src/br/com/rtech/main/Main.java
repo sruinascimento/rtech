@@ -37,6 +37,7 @@ public class Main {
         UtilityMethodService.getUniqueInstructrorsName(courses).forEach(System.out::println);
         System.out.println("Total active subcategories with description = " + UtilityMethodService.getTotalActiveSubcategoriesWithDescription(subCategories));
         System.out.println("Instructors and total courses");
-        UtilityMethodService.getInstructorsAndYoursTotalOfCourse(courses).forEach((name, total) -> System.out.println(name + ", " + total));
+        UtilityMethodService.getInstructorsAndYoursTotalOfCourse(courses).forEach((name, total) -> System.out.println(name + " -> " + total));
+
     }
 }
