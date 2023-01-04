@@ -1,8 +1,8 @@
-package br.com.rtech.service;
+package main.java.br.com.rtech.service;
 
-import br.com.rtech.model.Category;
-import br.com.rtech.model.Course;
-import br.com.rtech.model.SubCategory;
+import main.java.br.com.rtech.model.Category;
+import main.java.br.com.rtech.model.Course;
+import main.java.br.com.rtech.model.SubCategory;
 
 import java.io.FileWriter;
 import java.io.IOException;

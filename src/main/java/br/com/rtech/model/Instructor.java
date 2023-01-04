@@ -1,5 +1,4 @@
-package br.com.rtech.model;
-
+package main.java.br.com.rtech.model;
 public class Instructor {
 
     private String name;
