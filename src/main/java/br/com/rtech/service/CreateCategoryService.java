@@ -1,6 +1,6 @@
-package main.java.br.com.rtech.service;
+package br.com.rtech.service;
 
-import main.java.br.com.rtech.model.Category;
+import br.com.rtech.model.Category;
 
 import java.io.File;
 import java.io.FileNotFoundException;

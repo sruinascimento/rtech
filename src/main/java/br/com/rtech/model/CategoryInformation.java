@@ -1,4 +1,4 @@
-package main.java.br.com.rtech.model;
+package br.com.rtech.model;
 public abstract class CategoryInformation {
     private String name;
     private  String code;

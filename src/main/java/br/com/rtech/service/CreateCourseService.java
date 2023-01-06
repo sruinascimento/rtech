@@ -1,7 +1,7 @@
-package main.java.br.com.rtech.service;
+package br.com.rtech.service;
 
-import main.java.br.com.rtech.model.Course;
-import main.java.br.com.rtech.model.SubCategory;
+import br.com.rtech.model.Course;
+import br.com.rtech.model.SubCategory;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,9 +1,9 @@
-package main.java.br.com.rtech.main;
+package br.com.rtech.main;
 
-import main.java.br.com.rtech.model.Category;
-import main.java.br.com.rtech.model.Course;
-import main.java.br.com.rtech.model.SubCategory;
-import main.java.br.com.rtech.service.*;
+import br.com.rtech.model.Category;
+import br.com.rtech.model.Course;
+import br.com.rtech.model.SubCategory;
+import br.com.rtech.service.*;
 
 import java.util.*;
 

@@ -1,4 +1,4 @@
-package main.java.br.com.rtech.service;
+package br.com.rtech.service;
 
 import java.io.File;
 import java.io.FileNotFoundException;
