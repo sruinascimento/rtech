@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 public class CategoryTest {
 
     @Test
-    public void testNameWithLetters() {
+    public void testNameValid() {
         try {
             new Category("Ploop", "abcd123");
         } catch (IllegalArgumentException exception) {
@@ -41,6 +41,26 @@ public class CategoryTest {
     @Test
     public void testCodeWithBlankSpace() {
         Assertions.assertThrows(IllegalArgumentException.class, () -> new Category("Javinha", "   "));
+    }
+
+    @Test
+    public void testCodeValid() {
+        try {
+            new Category("Javinha", "abc-123");
+        } catch (IllegalArgumentException exception) {
+            exception.printStackTrace();
+            Assertions.fail();
+        }
+    }
+
+    @Test
+    public void testCodeInvalidFormatUpperCase() {
+        Assertions.assertThrows(IllegalArgumentException.class, () -> new Category("Javinha", "AAAA"));
+    }
+
+    @Test
+    public void testCodeInvalidFormatEspecialCharacters() {
+        Assertions.assertThrows(IllegalArgumentException.class, () -> new Category("Javinha", "!@##$"));
     }
 
 }
