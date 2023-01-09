@@ -9,7 +9,7 @@ public abstract class ActivityType {
     }
 
     protected void setText(String text) {
-        Validate.validateWordNotNull(text,  ErrorMessage.ACTIVITY_TYPE_TEXT);
+        Validate.validateWord(text,  ErrorMessage.ACTIVITY_TYPE_TEXT);
         this.text = text;
     }
 

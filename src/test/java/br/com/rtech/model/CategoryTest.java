@@ -18,29 +18,45 @@ public class CategoryTest {
     @Test
     public void testNullName() {
         Assertions.assertThrows(IllegalArgumentException.class, () -> new Category(null, "a123"));
-
-        //segunda forma
-//        try {
-//            new Category(null, "a123");
-//            Assertions.fail();
-//        } catch (IllegalArgumentException exception) {
-//            Assertions.assertTrue(ErrorMessage.CATEGORY_NAME.getMessage().equals(exception.getMessage()));
-//        }
     }
 
     @Test
-    public void testNameWithBlankSpace() {
-        Assertions.assertThrows(IllegalArgumentException.class, () -> new Category("  ", "a123"));
+    public void testEmptyName() {
+        Assertions.assertThrows(IllegalArgumentException.class, () -> new Category("", "abcde-123"));
     }
 
     @Test
-    public void testNullCode() {
-        Assertions.assertThrows(IllegalArgumentException.class, () -> new Category("Javinha", null));
+    public void testNameWithBlankSpaces() {
+        Assertions.assertThrows(IllegalArgumentException.class, () -> new Category("    ", "a123"));
     }
 
     @Test
-    public void testCodeWithBlankSpace() {
-        Assertions.assertThrows(IllegalArgumentException.class, () -> new Category("Javinha", "   "));
+    public void testNameUpperCase() {
+        try {
+            new Category("PHP", "abcd-123");
+        } catch (IllegalArgumentException exception) {
+            exception.printStackTrace();
+            Assertions.fail();
+        }
+    }
+
+    @Test
+    public void testNameLowerCase() {
+        try {
+            new Category("javinha", "abcde-123");
+        } catch (IllegalArgumentException exception) {
+            exception.printStackTrace();
+            Assertions.fail();
+        }
+    }
+    @Test
+    public void testNameSpecialCharacters() {
+        Assertions.assertThrows(IllegalArgumentException.class, () -> new Category("$java", "abcde123"));
+    }
+
+    @Test
+    public  void testNameWithNumbers() {
+        Assertions.assertThrows(IllegalArgumentException.class, () -> new Category("123", "abcde123"));
     }
 
     @Test
@@ -54,12 +70,43 @@ public class CategoryTest {
     }
 
     @Test
-    public void testCodeInvalidFormatUpperCase() {
-        Assertions.assertThrows(IllegalArgumentException.class, () -> new Category("Javinha", "AAAA"));
+    public void testNullCode() {
+        Assertions.assertThrows(IllegalArgumentException.class, () -> new Category("Javinha", null));
+    }
+    @Test
+    public void testEmptyCode() {
+        Assertions.assertThrows(IllegalArgumentException.class, () -> new Category("Javinha", ""));
+    }
+    @Test
+    public void testCodeBlankSpaces() {
+        Assertions.assertThrows(IllegalArgumentException.class, () -> new Category("Javinha", "   "));
     }
 
     @Test
-    public void testCodeInvalidFormatEspecialCharacters() {
+    public void testCodeWithNumbers() {
+        try {
+            new Category("Java poo", "12334");
+        } catch (IllegalArgumentException exception) {
+            exception.printStackTrace();
+            Assertions.fail();
+        }
+    }
+    @Test
+    public void testCodeUpperCase() {
+        Assertions.assertThrows(IllegalArgumentException.class, () -> new Category("Javinha", "AAAA"));
+    }
+    @Test
+    public void testCodeLowerCase() {
+        try {
+            new Category("Javinha", "abcde");
+        } catch (IllegalArgumentException exception) {
+            exception.printStackTrace();
+            Assertions.fail();
+        }
+    }
+
+    @Test
+    public void testCodeSpecialCharacters() {
         Assertions.assertThrows(IllegalArgumentException.class, () -> new Category("Javinha", "!@##$"));
     }
 

@@ -10,7 +10,7 @@ public class Section {
     private Course course;
 
     public Section(String name, String code, Course course) {
-        Validate.validateWordNotNull(name, ErrorMessage.SECTION_NAME);
+        Validate.validateWord(name, ErrorMessage.SECTION_NAME);
         Validate.validateCode(code, ErrorMessage.SECTION_CODE);
         this.name = name;
         this.code = code;

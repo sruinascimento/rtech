@@ -1,10 +1,8 @@
 package br.com.rtech.model;
 
 public class Validate {
-
-    //Chamar as mensagens de erro, sem precisar passar por parâmetro?
-    public static void validateWordNotNull(String word, ErrorMessage errorMessage) {
-        if (isEmptyOrNull(word)) {
+    public static void validateWord(String word, ErrorMessage errorMessage) {
+        if (isEmptyOrNull(word) || !word.matches( "[a-zA-Zç\\s^~´]{3,}")) {
             throw new IllegalArgumentException(errorMessage.getMessage());
         }
     }

@@ -14,7 +14,7 @@ public class Course {
 
 
     public Course(String name, String code, int estimatedTimeCourseCompletion, String instructorsName) {
-        Validate.validateWordNotNull(name, ErrorMessage.COURSE_NAME);
+        Validate.validateWord(name, ErrorMessage.COURSE_NAME);
         Validate.validateCode(code, ErrorMessage.COURSE_CODE);
         Validate.validateNumberRange(estimatedTimeCourseCompletion, ErrorMessage.ESTIMATED_TIME_COURSE_COMPLETION);
         Validate.validateNameInstructor(instructorsName, ErrorMessage.INSTRUCTORS_NAME);
