@@ -4,7 +4,6 @@ public class Instructor {
     private String name;
 
     public Instructor(String name) {
-        Validate.validateWord(name, ErrorMessage.COURSE_NAME);
         this.name = name;
     }
 

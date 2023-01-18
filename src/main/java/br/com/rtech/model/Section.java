@@ -5,7 +5,7 @@ public class Section {
     private String name;
     private String code;
     private int order;
-    private boolean inactive;
+    private boolean active;
     private boolean test;
     private Course course;
 
@@ -33,12 +33,12 @@ public class Section {
         this.order = order;
     }
 
-    public boolean isInactive() {
-        return this.inactive;
+    public boolean isActive() {
+        return this.active;
     }
 
-    public void setInactive(boolean inactive) {
-        this.inactive = inactive;
+    public void setActive(boolean active) {
+        this.active = active;
     }
 
     public boolean isTest() {
@@ -59,7 +59,7 @@ public class Section {
                 "name='" + name + '\'' +
                 ", code='" + code + '\'' +
                 ", order=" + order +
-                ", inactive=" + inactive +
+                ", active=" + active +
                 ", test=" + test +
                 ", course=" + course +
                 '}';

@@ -4,13 +4,12 @@ public abstract class ActivityType {
 
     private String text;
 
-    public String getText() {
-        return text;
-    }
-
-    protected void setText(String text) {
+    public ActivityType(String text) {
         Validate.validateWord(text,  ErrorMessage.ACTIVITY_TYPE_TEXT);
         this.text = text;
+    }
+    public String getText() {
+        return text;
     }
 
     @Override

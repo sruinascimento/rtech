@@ -26,8 +26,8 @@ public class CreateCourseService {
                 SubCategory subCategory = subCategories.get(subcategoryCode);
                 if (subCategory == null) throw new RuntimeException("Invalid subcategory: " + subcategoryCode);
                 Course course = new Course(name, code, estimatedTimeCourseCompletion, instructorsName);
-                if (visibility.equals("PÚBLICA")) course.setPrivateVisibility(false);
-                if (visibility.equals("PRIVADA")) course.setPrivateVisibility(true);
+                if (visibility.equals("PÚBLICA")) course.setPublicVisibility(true);
+                if (visibility.equals("PRIVADA")) course.setPublicVisibility(false);
                 course.setTargetPublic(targetPublic);
                 course.setSyllabus(syllabus);
                 course.setDevelopedSkills(skills);

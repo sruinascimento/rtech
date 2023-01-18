@@ -5,7 +5,7 @@ public class Question extends ActivityType {
     private String type = "unique answer";
 
     public Question(String enunciate) {
-        super.setText(enunciate);
+        super(enunciate);
     }
 
     public String getType() {
