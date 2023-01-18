@@ -129,4 +129,4 @@ CREATE TABLE alternative(
     REFERENCES question(id)
 );
 
-DROP SCHEMA rtech;
+#DROP SCHEMA rtech;
