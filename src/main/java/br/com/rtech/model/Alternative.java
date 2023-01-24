@@ -1,5 +1,7 @@
 package br.com.rtech.model;
 
+import br.com.rtech.validation.Validate;
+
 public class Alternative {
     
     private String text;
@@ -9,7 +11,9 @@ public class Alternative {
     private Question question;
 
     public Alternative(String text, boolean correct, Question question) {
-        Validate.validateWord(text, ErrorMessage.ALTERNATIVE_TEXT);
+        Validate.validateText(text, "[a-zA-Zç\\s^~´]{3,}", ErrorMessage.ALTERNATIVE_TEXT.getMessage());
+
+//        Validate.validateWord(text, ErrorMessage.ALTERNATIVE_TEXT);
         this.text = text;
         this.correct = correct;
         this.question = question;

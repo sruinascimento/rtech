@@ -1,5 +1,7 @@
 package br.com.rtech.model;
 
+import br.com.rtech.validation.Validate;
+
 public class Course {
 
     private String name;
@@ -14,10 +16,10 @@ public class Course {
 
 
     public Course(String name, String code, int estimatedTimeCourseCompletion, String instructorsName) {
-        Validate.validateWord(name, ErrorMessage.COURSE_NAME);
-        Validate.validateCode(code, ErrorMessage.COURSE_CODE);
-        Validate.validateNumberRange(estimatedTimeCourseCompletion, ErrorMessage.ESTIMATED_TIME_COURSE_COMPLETION);
-        Validate.validateNameInstructor(instructorsName, ErrorMessage.INSTRUCTORS_NAME);
+        Validate.validateText(name, "[a-zA-Zç\\s^~´]{3,}", ErrorMessage.COURSE_NAME.getMessage());
+        Validate.validateText(code, "[a-z0-9]+[a-z-0-9]*[a-z0-9]",ErrorMessage.COURSE_CODE.getMessage());
+        Validate.validateNumberRange(estimatedTimeCourseCompletion, 1, 20, ErrorMessage.ESTIMATED_TIME_COURSE_COMPLETION.getMessage());
+        Validate.validateText(instructorsName, "[a-zA-Zç\\s^~´]{3,}", ErrorMessage.INSTRUCTORS_NAME.getMessage());
         this.name = name;
         this.code = code;
         this.estimatedTimeCourseCompletion = estimatedTimeCourseCompletion;

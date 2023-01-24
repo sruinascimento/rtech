@@ -1,5 +1,7 @@
 package br.com.rtech.model;
 
+import br.com.rtech.validation.Validate;
+
 public class Section {
 
     private String name;
@@ -10,8 +12,9 @@ public class Section {
     private Course course;
 
     public Section(String name, String code, Course course) {
-        Validate.validateWord(name, ErrorMessage.SECTION_NAME);
-        Validate.validateCode(code, ErrorMessage.SECTION_CODE);
+        Validate.validateText(name, "[a-zA-Zç\\s^~´]{3,}", ErrorMessage.SECTION_NAME.getMessage());
+//        Validate.validateWord(name, ErrorMessage.SECTION_NAME);
+        Validate.validateText(code, "[a-z0-9]+[a-z-0-9]*[a-z0-9]",ErrorMessage.SECTION_CODE.getMessage());
         this.name = name;
         this.code = code;
         this.course = course;

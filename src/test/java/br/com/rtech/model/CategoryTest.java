@@ -1,8 +1,9 @@
 package br.com.rtech.model;
 
-import br.com.rtech.model.Category;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.fail;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 
 public class CategoryTest {
 
@@ -11,23 +12,23 @@ public class CategoryTest {
         try {
             new Category("Ploop", "abcd123");
         } catch (IllegalArgumentException exception) {
-            Assertions.fail();
+            fail();
         }
     }
 
     @Test
     public void testNullName() {
-        Assertions.assertThrows(IllegalArgumentException.class, () -> new Category(null, "a123"));
+        assertThrows(IllegalArgumentException.class, () -> new Category(null, "a123"));
     }
 
     @Test
     public void testEmptyName() {
-        Assertions.assertThrows(IllegalArgumentException.class, () -> new Category("", "abcde-123"));
+        assertThrows(IllegalArgumentException.class, () -> new Category("", "abcde-123"));
     }
 
     @Test
     public void testNameWithBlankSpaces() {
-        Assertions.assertThrows(IllegalArgumentException.class, () -> new Category("    ", "a123"));
+        assertThrows(IllegalArgumentException.class, () -> new Category("    ", "a123"));
     }
 
     @Test
@@ -36,7 +37,7 @@ public class CategoryTest {
             new Category("PHP", "abcd-123");
         } catch (IllegalArgumentException exception) {
             exception.printStackTrace();
-            Assertions.fail();
+            fail();
         }
     }
 
@@ -46,17 +47,17 @@ public class CategoryTest {
             new Category("javinha", "abcde-123");
         } catch (IllegalArgumentException exception) {
             exception.printStackTrace();
-            Assertions.fail();
+            fail();
         }
     }
     @Test
     public void testNameSpecialCharacters() {
-        Assertions.assertThrows(IllegalArgumentException.class, () -> new Category("$java", "abcde123"));
+        assertThrows(IllegalArgumentException.class, () -> new Category("$java", "abcde123"));
     }
 
     @Test
     public  void testNameWithNumbers() {
-        Assertions.assertThrows(IllegalArgumentException.class, () -> new Category("123", "abcde123"));
+        assertThrows(IllegalArgumentException.class, () -> new Category("123", "abcde123"));
     }
 
     @Test
@@ -65,21 +66,21 @@ public class CategoryTest {
             new Category("Javinha", "abc-123");
         } catch (IllegalArgumentException exception) {
             exception.printStackTrace();
-            Assertions.fail();
+            fail();
         }
     }
 
     @Test
     public void testNullCode() {
-        Assertions.assertThrows(IllegalArgumentException.class, () -> new Category("Javinha", null));
+        assertThrows(IllegalArgumentException.class, () -> new Category("Javinha", null));
     }
     @Test
     public void testEmptyCode() {
-        Assertions.assertThrows(IllegalArgumentException.class, () -> new Category("Javinha", ""));
+        assertThrows(IllegalArgumentException.class, () -> new Category("Javinha", ""));
     }
     @Test
     public void testCodeBlankSpaces() {
-        Assertions.assertThrows(IllegalArgumentException.class, () -> new Category("Javinha", "   "));
+        assertThrows(IllegalArgumentException.class, () -> new Category("Javinha", "   "));
     }
 
     @Test
@@ -88,12 +89,12 @@ public class CategoryTest {
             new Category("Java poo", "12334");
         } catch (IllegalArgumentException exception) {
             exception.printStackTrace();
-            Assertions.fail();
+            fail();
         }
     }
     @Test
     public void testCodeUpperCase() {
-        Assertions.assertThrows(IllegalArgumentException.class, () -> new Category("Javinha", "AAAA"));
+        assertThrows(IllegalArgumentException.class, () -> new Category("Javinha", "AAAA"));
     }
     @Test
     public void testCodeLowerCase() {
@@ -101,13 +102,13 @@ public class CategoryTest {
             new Category("Javinha", "abcde");
         } catch (IllegalArgumentException exception) {
             exception.printStackTrace();
-            Assertions.fail();
+            fail();
         }
     }
 
     @Test
     public void testCodeSpecialCharacters() {
-        Assertions.assertThrows(IllegalArgumentException.class, () -> new Category("Javinha", "!@##$"));
+        assertThrows(IllegalArgumentException.class, () -> new Category("Javinha", "!@##$"));
     }
 
 }
