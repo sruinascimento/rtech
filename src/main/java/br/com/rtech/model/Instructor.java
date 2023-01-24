@@ -1,11 +1,9 @@
 package br.com.rtech.model;
-
 public class Instructor {
 
     private String name;
 
     public Instructor(String name) {
-        Validate.validateWordNotNull(name, ErrorMessage.COURSE_NAME);
         this.name = name;
     }
 

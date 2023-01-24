@@ -6,7 +6,7 @@ public class Video extends ActivityType {
     private String description;
 
     public Video(String url) {
-        super.setText(url);
+        super(url);
     }
 
     public String getUrl() {

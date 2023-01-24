@@ -9,7 +9,7 @@ public class Alternative {
     private Question question;
 
     public Alternative(String text, boolean correct, Question question) {
-        Validate.validateWordNotNull(text, ErrorMessage.ALTERNATIVE_TEXT);
+        Validate.validateWord(text, ErrorMessage.ALTERNATIVE_TEXT);
         this.text = text;
         this.correct = correct;
         this.question = question;

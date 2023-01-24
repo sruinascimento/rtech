@@ -4,12 +4,12 @@ public class Activity {
 
     private String title;
     private String code;
-    private boolean inactive;
+    private boolean active;
     private ActivityType type;
     private Section section;
 
     public Activity(String title, String code, Section section) {
-        Validate.validateWordNotNull(title, ErrorMessage.ACTIVITY_NAME);
+        Validate.validateWord(title, ErrorMessage.ACTIVITY_NAME);
         Validate.validateCode(code, ErrorMessage.ACTIVITY_CODE);
         this.title = title;
         this.code = code;
@@ -24,12 +24,12 @@ public class Activity {
         return code;
     }
 
-    public boolean isInactive() {
-        return inactive;
+    public boolean isActive() {
+        return active;
     }
 
-    public void setInactive(boolean inactive) {
-        this.inactive = inactive;
+    public void setActive(boolean active) {
+        this.active = active;
     }
 
     public ActivityType getType() {
@@ -49,7 +49,7 @@ public class Activity {
         return "br.com.rtech.model.Activity{" +
                 "title='" + title + '\'' +
                 ", code='" + code + '\'' +
-                ", inactive=" + inactive +
+                ", active=" + active +
                 ", type='" + type + '\'' +
                 ", section=" + section +
                 '}';

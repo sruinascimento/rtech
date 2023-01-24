@@ -24,7 +24,7 @@ public class UtilityMethodService {
 
     public static boolean isAnyPrivateCourse(List<Course> courses) {
         return courses.stream()
-                .anyMatch(Course::isPrivateVisibility);
+                .anyMatch(Course::isPublicVisibility);
     }
 
     public static List<String> getUniqueInstructrorsName(List<Course> courses) {

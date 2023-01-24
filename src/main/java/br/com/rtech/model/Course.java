@@ -5,7 +5,7 @@ public class Course {
     private String name;
     private String code;
     private int estimatedTimeCourseCompletion;
-    private boolean privateVisibility;
+    private boolean publicVisibility;
     private String targetPublic;
     private Instructor instructor;
     private String syllabus;
@@ -14,7 +14,7 @@ public class Course {
 
 
     public Course(String name, String code, int estimatedTimeCourseCompletion, String instructorsName) {
-        Validate.validateWordNotNull(name, ErrorMessage.COURSE_NAME);
+        Validate.validateWord(name, ErrorMessage.COURSE_NAME);
         Validate.validateCode(code, ErrorMessage.COURSE_CODE);
         Validate.validateNumberRange(estimatedTimeCourseCompletion, ErrorMessage.ESTIMATED_TIME_COURSE_COMPLETION);
         Validate.validateNameInstructor(instructorsName, ErrorMessage.INSTRUCTORS_NAME);
@@ -36,12 +36,12 @@ public class Course {
         return this.estimatedTimeCourseCompletion;
     }
 
-    public boolean isPrivateVisibility() {
-        return this.privateVisibility;
+    public boolean isPublicVisibility() {
+        return this.publicVisibility;
     }
 
-    public void setPrivateVisibility (boolean privateVisibility) {
-        this.privateVisibility = privateVisibility;
+    public void setPublicVisibility(boolean publicVisibility) {
+        this.publicVisibility = publicVisibility;
     }
 
     public String getTargetPublic() {
@@ -86,7 +86,7 @@ public class Course {
                 "name='" + this.name + '\'' +
                 ", code='" + this.code + '\'' +
                 ", estimatedTimeCourseCompletion=" + this.estimatedTimeCourseCompletion +
-                ", privateVisibility=" + this.privateVisibility +
+                ", publicVisibility=" + this.publicVisibility +
                 ", targetPublic='" + this.targetPublic + '\'' +
                 ", instructor=" + this.instructor.getName() +
                 ", courseSyllabus='" + this.syllabus + '\'' +
