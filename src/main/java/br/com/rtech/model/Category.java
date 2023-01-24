@@ -1,5 +1,7 @@
 package br.com.rtech.model;
 
+import br.com.rtech.validation.Validate;
+
 public class Category extends  CategoryInformation {
 
     private String iconPath;
@@ -23,7 +25,7 @@ public class Category extends  CategoryInformation {
     }
 
     public void setHtmlColorCode(String htmlColorCode) {
-        Validate.validateHtmlColorHexadecimal(htmlColorCode, ErrorMessage.HTML_COLOR_CODE);
+        Validate.validateText(htmlColorCode, "#[A-Fa-f0-9]{6}", ErrorMessage.HTML_COLOR_CODE.getMessage());
         this.htmlColorCode = htmlColorCode;
     }
 

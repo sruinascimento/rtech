@@ -1,19 +1,21 @@
 package br.com.rtech.model;
 
+import br.com.rtech.validation.Validate;
+
 public class Question extends ActivityType {
 
-    private String type = "unique answer";
+    private OptionQuestion type = OptionQuestion.MULTIPLES_CHOICES;
 
     public Question(String enunciate) {
         super(enunciate);
     }
 
-    public String getType() {
+    public OptionQuestion getType() {
         return type;
     }
 
-    public void setType(String type) {
-        Validate.validateQuestionType(type, ErrorMessage.QUESTION_TYPE);
+    public void setType(OptionQuestion type) {
+        Validate.validateQuestionType(type, ErrorMessage.QUESTION_TYPE.getMessage());
         this.type = type;
     }
 
