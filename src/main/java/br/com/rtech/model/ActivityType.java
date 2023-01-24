@@ -7,7 +7,7 @@ public abstract class ActivityType {
     private String text;
 
     public ActivityType(String text) {
-        Validate.validateText(text, "[a-zA-Zç\\s^~´]{3,}", ErrorMessage.ACTIVITY_TYPE_TEXT.getMessage());
+        Validate.validateText(text, "[a-zA-Zç\\sáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ:]{3,}", ErrorMessage.ACTIVITY_TYPE_TEXT.getMessage());
 
 //        Validate.validateWord(text,  ErrorMessage.ACTIVITY_TYPE_TEXT);
         this.text = text;

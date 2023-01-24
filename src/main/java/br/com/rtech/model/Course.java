@@ -16,10 +16,10 @@ public class Course {
 
 
     public Course(String name, String code, int estimatedTimeCourseCompletion, String instructorsName) {
-        Validate.validateText(name, "[a-zA-Zç\\s^~´]{3,}", ErrorMessage.COURSE_NAME.getMessage());
+        Validate.validateText(name, "[a-zA-Zç\\sáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ:]{3,}", ErrorMessage.COURSE_NAME.getMessage());
         Validate.validateText(code, "[a-z0-9]+[a-z-0-9]*[a-z0-9]",ErrorMessage.COURSE_CODE.getMessage());
         Validate.validateNumberRange(estimatedTimeCourseCompletion, 1, 20, ErrorMessage.ESTIMATED_TIME_COURSE_COMPLETION.getMessage());
-        Validate.validateText(instructorsName, "[a-zA-Zç\\s^~´]{3,}", ErrorMessage.INSTRUCTORS_NAME.getMessage());
+        Validate.validateText(instructorsName, "[a-zA-Zç\\sáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ:]{3,}", ErrorMessage.INSTRUCTORS_NAME.getMessage());
         this.name = name;
         this.code = code;
         this.estimatedTimeCourseCompletion = estimatedTimeCourseCompletion;

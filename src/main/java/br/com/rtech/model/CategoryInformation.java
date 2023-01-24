@@ -12,7 +12,7 @@ public abstract class CategoryInformation {
 
 
     public CategoryInformation(String name, String code) {
-        Validate.validateText(name, "[a-zA-Zç\\s^~´]{3,}", ErrorMessage.CATEGORY_NAME.getMessage());
+        Validate.validateText(name, "[a-zA-Zç\\sáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ:]{3,}", ErrorMessage.CATEGORY_NAME.getMessage());
         Validate.validateText(code, "[a-z0-9]+[a-z-0-9]*[a-z0-9]",ErrorMessage.CATEGORY_CODE.getMessage());
 
 //        Validate.validateWord(name, ErrorMessage.CATEGORY_NAME);

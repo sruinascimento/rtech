@@ -12,7 +12,7 @@ public class Section {
     private Course course;
 
     public Section(String name, String code, Course course) {
-        Validate.validateText(name, "[a-zA-Zç\\s^~´]{3,}", ErrorMessage.SECTION_NAME.getMessage());
+        Validate.validateText(name, "[a-zA-Zç\\sáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ:]{3,}", ErrorMessage.SECTION_NAME.getMessage());
 //        Validate.validateWord(name, ErrorMessage.SECTION_NAME);
         Validate.validateText(code, "[a-z0-9]+[a-z-0-9]*[a-z0-9]",ErrorMessage.SECTION_CODE.getMessage());
         this.name = name;

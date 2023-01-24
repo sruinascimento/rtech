@@ -11,7 +11,7 @@ public class Activity {
     private Section section;
 
     public Activity(String title, String code, Section section) {
-        Validate.validateText(title, "[a-zA-Zç\\s^~´]{3,}", ErrorMessage.ACTIVITY_NAME.getMessage());
+        Validate.validateText(title, "[a-zA-Zç\\sáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ:]{3,}", ErrorMessage.ACTIVITY_NAME.getMessage());
         Validate.validateText(code, "[a-z0-9]+[a-z-0-9]*[a-z0-9]",ErrorMessage.ACTIVITY_CODE.getMessage());
 
         this.title = title;
