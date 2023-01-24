@@ -11,7 +11,7 @@ public class Alternative {
     private Question question;
 
     public Alternative(String text, boolean correct, Question question) {
-        Validate.validateText(text, "[a-zA-Zç\\s^~´]{3,}", ErrorMessage.ALTERNATIVE_TEXT.getMessage());
+        Validate.validateText(text, "[a-zA-Zç\\sáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ:]{3,}", ErrorMessage.ALTERNATIVE_TEXT.getMessage());
 
 //        Validate.validateWord(text, ErrorMessage.ALTERNATIVE_TEXT);
         this.text = text;
