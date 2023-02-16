@@ -4,6 +4,7 @@ import br.com.rtech.validation.Validate;
 
 public class Course {
 
+    private Integer id;
     private String name;
     private String code;
     private int estimatedTimeCourseCompletion;
@@ -80,6 +81,14 @@ public class Course {
 
     public void setSubCategory(SubCategory subCategory) {
         this.subCategory = subCategory;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     @Override

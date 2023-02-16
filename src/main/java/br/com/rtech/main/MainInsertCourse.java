@@ -1,18 +1,25 @@
 package br.com.rtech.main;
 
+import br.com.rtech.dao.CourseDAO;
 import br.com.rtech.factory.ConnectionFactory;
+import br.com.rtech.model.Course;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 public class MainInsertCourse {
     public static void main(String[] args) {
 
         ConnectionFactory connectionFactory = new ConnectionFactory();
-        String sqlInstructor = "INSERT INTO instructor (name_instructor) VALUES (?);";
+        try (Connection connection = connectionFactory.getConnection()) {
+            var courseDao = new CourseDAO(connection);
+            Course course = new Course("Python POO", "python-poo", 20, "Ploop pypy");
+            courseDao.save(course);
+        } catch (SQLException exception) {
+            exception.printStackTrace();
+        }
 
+
+        /* String sqlInstructor = "INSERT INTO instructor (name_instructor) VALUES (?);";
         try (PreparedStatement preparedStatement = connectionFactory.getConnection().prepareStatement(sqlInstructor, Statement.RETURN_GENERATED_KEYS)) {
             preparedStatement.setString(1, "Kilua");
             preparedStatement.execute();
@@ -45,7 +52,7 @@ public class MainInsertCourse {
             }
         } catch (SQLException e) {
             e.printStackTrace();
-        }
+        }*/
 
 
     }

@@ -1,0 +1,119 @@
+package br.com.rtech.dao;
+
+import br.com.rtech.model.Course;
+
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
+
+public class CourseDAO {
+    private Connection connection;
+
+    public CourseDAO(Connection connection) {
+        this.connection = connection;
+    }
+
+    public void save(Course course) {
+        String sqlInstructor = "INSERT INTO instructor (name_instructor) VALUES (?);";
+        try (PreparedStatement preparedStatement = this.connection.prepareStatement(sqlInstructor, Statement.RETURN_GENERATED_KEYS)) {
+            preparedStatement.setString(1, course.getInstructor().getName());
+            preparedStatement.execute();
+            try (ResultSet resultSet = preparedStatement.getGeneratedKeys()) {
+                while (resultSet.next()) {
+                    Integer id = resultSet.getInt(1);
+                    System.out.println("Id do instrutor gerado " + id);
+                    String sql = "INSERT INTO course (name_course, code_course, estimated_time_course_completion, public_visibility, id_instructor)" +
+                                 " VALUES ( ?, ?, ?, ?, ?);";
+                    try (PreparedStatement preparedStatement1 = this.connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+                        preparedStatement1.setString(1, course.getName());
+                        preparedStatement1.setString(2, course.getCode());
+                        preparedStatement1.setInt(3, course.getEstimatedTimeCourseCompletion());
+                        String publicVisibility = course.isPublicVisibility() ? "PÚBLICA" : "PRIVADA";
+                        preparedStatement1.setString(4, publicVisibility);
+                        preparedStatement1.setInt(5, id);
+
+                        preparedStatement1.execute();
+
+                        try (ResultSet resultSet1 = preparedStatement1.getGeneratedKeys()) {
+                            while (resultSet1.next()) {
+                                System.out.println("Id do curso " + resultSet1.getInt(1));
+                            }
+                        } catch (SQLException e) {
+                            e.printStackTrace();
+                        }
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public void updateCoursePrivateVisibilityToPublicVisibility() {
+        String publicVisibility = "PÚBLICA";
+        String privateVisibility = "PRIVADA";
+        String sql = "UPDATE course c SET c.public_visibility = ? WHERE c.public_visibility = ? ";
+        try (PreparedStatement preparedStatement = this.connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+            preparedStatement.setString(1, publicVisibility);
+            preparedStatement.setString(2, privateVisibility);
+            preparedStatement.execute();
+            int linesUpdateds = preparedStatement.getUpdateCount();
+            System.out.println("Lines updateds: " + linesUpdateds);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void delete(int id) {
+        String sql = "DELETE FROM course WHERE id = ?";
+        try (PreparedStatement preparedStatement = this.connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+            preparedStatement.setInt(1, id);
+            preparedStatement.execute();
+            int lineModifieds = preparedStatement.getUpdateCount();
+            System.out.println("Register deleted = " + lineModifieds);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public List<String[]> getReportPublicCourse() {
+        List<String[]> coursesPublic = new ArrayList<>();
+        String sql = "SELECT c.id, c.name_course, c.estimated_time_course_completion, c.id_subcategory, ci.name_category " +
+                     "FROM course c " +
+                     "INNER JOIN subcategory s " +
+                     "ON s.id = c.id_subcategory " +
+                     "INNER JOIN category_information ci " +
+                     "ON ci.id = s.id_category_information " +
+                     "WHERE c.public_visibility = ?";
+
+        try (PreparedStatement preparedStatement = this.connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+            String publicVisibility = "PÚBLICA";
+            preparedStatement.setString(1, publicVisibility);
+            preparedStatement.execute();
+
+            try (ResultSet resultSet = preparedStatement.getResultSet()) {
+                while (resultSet.next()) {
+                    int courseId = resultSet.getInt(1);
+                    String courseName = resultSet.getString(2);
+                    int estimatedTimeCourseCompletion = resultSet.getInt(3);
+                    int subcategoryId =  resultSet.getInt(4);
+                    String subcategoryName = resultSet.getString(5);
+
+                    String[] dataPublicCourses = {String.valueOf(courseId), courseName, String.valueOf(estimatedTimeCourseCompletion), String.valueOf(subcategoryId), subcategoryName};
+
+                    coursesPublic.add(dataPublicCourses);
+                }
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return coursesPublic;
+    }
+
+
+}
