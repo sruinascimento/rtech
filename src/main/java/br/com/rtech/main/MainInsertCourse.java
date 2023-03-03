@@ -12,7 +12,7 @@ public class MainInsertCourse {
         ConnectionFactory connectionFactory = new ConnectionFactory();
         try (Connection connection = connectionFactory.getConnection()) {
             var courseDao = new CourseDAO(connection);
-            Course course = new Course("Python POO", "python-poo", 20, "Ploop pypy");
+            Course course = new Course("Python POO", "python-poo", 20, "Aquiles");
             courseDao.save(course);
         } catch (SQLException exception) {
             exception.printStackTrace();

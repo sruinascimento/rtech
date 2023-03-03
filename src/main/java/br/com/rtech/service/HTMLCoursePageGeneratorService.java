@@ -15,7 +15,7 @@ public class HTMLCoursePageGeneratorService {
                 String estimatedTimeCourseCompletion = course[2];
                 String idSubcategory = course[3];
                 String subcategoryName = course[4];
-                fileWriter.write(getDivContetCourse(idCourse, courseName, estimatedTimeCourseCompletion, idSubcategory, subcategoryName));
+                fileWriter.write(getDivContentCourse(idCourse, courseName, estimatedTimeCourseCompletion, idSubcategory, subcategoryName));
 //                fileWriter.write("<p>" + course[0] +"</p>");
 //                fileWriter.write("\n");
 //                fileWriter.write("<p>" + course[1] +"</p>");
@@ -85,7 +85,7 @@ public class HTMLCoursePageGeneratorService {
                 """;
     }
 
-    private static String getDivContetCourse(String idCourse, String courseName, String estimatedTimeCourseCompletion, String subcategoryId, String subcategoryName) {
+    private static String getDivContentCourse(String idCourse, String courseName, String estimatedTimeCourseCompletion, String subcategoryId, String subcategoryName) {
         return """
                         <div class="content-course">
                             <h2 style="text-align: center"> Course </h2>

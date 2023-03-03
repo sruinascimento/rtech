@@ -1,6 +1,5 @@
 package br.com.rtech.service;
 
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashMap;
@@ -19,8 +18,7 @@ public class LoadDataDBConfigurationService {
     }
 
     private static Properties loadFileConfiguration() {
-        String path = "/home/rui/IdeaProjects/rtech/src/main/resources/.properties";
-        try (InputStream inputStream =  new FileInputStream(path)) {
+        try (InputStream inputStream =  LoadDataDBConfigurationService.class.getResourceAsStream("/.properties")) {
             Properties properties = new Properties();
             properties.load(inputStream);
             return properties;

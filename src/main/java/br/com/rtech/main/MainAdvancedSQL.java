@@ -8,9 +8,9 @@ public class MainAdvancedSQL {
     public static void main(String[] args) {
         ConnectionFactory connectionFactory = new ConnectionFactory();
         try (Connection connection = connectionFactory.getConnection()) {
-            getNameAndOrderOfSubcategoriesHasCourse(connection);
+//            getNameAndOrderOfSubcategoriesHasCourse(connection);
             getNameAndAmountOfInstructorHasMoreCourses(connection);
-            getCategoryNameAndAmountoOfCoursesAndAmountHoursToConclusion(connection);
+           // getCategoryNameAndAmountoOfCoursesAndAmountHoursToConclusion(connection);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -50,11 +50,10 @@ public class MainAdvancedSQL {
     private static void getNameAndAmountOfInstructorHasMoreCourses(Connection connection) {
         String sql = """ 
                         SELECT i.name_instructor, COUNT(i.name_instructor) AS total_of_courses FROM instructor i
-                        INNER JOIN course c\s
-                        ON c.id_instructor = i.id
-                        GROUP BY name_instructor\s
+                        INNER JOIN course c ON c.id_instructor = i.id
+                        GROUP BY name_instructor
                         ORDER BY total_of_courses DESC, i.name_instructor  
-                        LIMIT 1;                        
+                        LIMIT 1;
                 """;
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)){
@@ -75,11 +74,10 @@ public class MainAdvancedSQL {
 
     private static void getCategoryNameAndAmountoOfCoursesAndAmountHoursToConclusion(Connection connection) {
         String sql = """ 
-                       SELECT ci.name_category, COUNT(c.id_subcategory) AS total_courses, 	SUM(c.estimated_time_course_completion) as total_hours_conclusion_course  FROM subcategory s\s
-                       INNER JOIN course c
-                       ON c.id_subcategory = s.id
-                       INNER JOIN category_information ci
-                       ON s.id_category = ci.id
+                       SELECT ci.name_category, COUNT(c.id_subcategory) AS total_courses, 	SUM(c.estimated_time_course_completion) as total_hours_conclusion_course  
+                       FROM subcategory s
+                       INNER JOIN course c ON c.id_subcategory = s.id
+                       INNER JOIN category_information ci ON s.id_category = ci.id
                        WHERE ci.is_active IN (?)
                        GROUP BY ci.name_category ;     
                 """;

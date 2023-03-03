@@ -10,7 +10,7 @@ public class MainDeleteCourse {
         ConnectionFactory connectionFactory = new ConnectionFactory();
         try (Connection connection = connectionFactory.getConnection()) {
             var courseDao = new CourseDAO(connection);
-            courseDao.delete(9);
+            courseDao.delete(6);
         } catch (SQLException e) {
             e.printStackTrace();
         }
