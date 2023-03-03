@@ -21,7 +21,7 @@ public class Question extends ActivityType {
 
     @Override
     public String toString() {
-        return "br.com.rtech.model.Question{" +
+        return "Question{" +
                 "enunciate='" + super.getText()+ '\'' +
                 " type='" + type + '\'' +
                 '}';

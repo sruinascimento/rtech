@@ -1,3 +1,0 @@
-Manifest-Version: 1.0
-br.com.rtech.main.Main-Class: br.com.rtech.main.Main
-

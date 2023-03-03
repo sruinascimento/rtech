@@ -8,8 +8,6 @@ public abstract class ActivityType {
 
     public ActivityType(String text) {
         Validate.validateText(text, "[a-zA-Zç\\sáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ:]{3,}", ErrorMessage.ACTIVITY_TYPE_TEXT.getMessage());
-
-//        Validate.validateWord(text,  ErrorMessage.ACTIVITY_TYPE_TEXT);
         this.text = text;
     }
     public String getText() {

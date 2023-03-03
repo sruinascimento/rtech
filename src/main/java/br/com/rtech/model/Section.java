@@ -13,7 +13,6 @@ public class Section {
 
     public Section(String name, String code, Course course) {
         Validate.validateText(name, "[a-zA-Zç\\sáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ:]{3,}", ErrorMessage.SECTION_NAME.getMessage());
-//        Validate.validateWord(name, ErrorMessage.SECTION_NAME);
         Validate.validateText(code, "[a-z0-9]+[a-z-0-9]*[a-z0-9]",ErrorMessage.SECTION_CODE.getMessage());
         this.name = name;
         this.code = code;
@@ -58,7 +57,7 @@ public class Section {
 
     @Override
     public String toString() {
-        return "br.com.rtech.model.Section{" +
+        return "Section{" +
                 "name='" + name + '\'' +
                 ", code='" + code + '\'' +
                 ", order=" + order +

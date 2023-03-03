@@ -31,7 +31,7 @@ public class Video extends ActivityType {
 
     @Override
     public String toString() {
-        return "br.com.rtech.model.Video{" +
+        return "Video{" +
                 "url=" + this.getUrl()+
                 "minutes=" + minutes +
                 ", description='" + description + '\'' +

@@ -1,0 +1,74 @@
+body {
+    font-family: 'Poppins';
+    background-color: rgb(21, 28, 48);
+}
+
+header, main {
+    margin-bottom: 10px;
+}
+
+
+h1 {
+    text-align: center;
+    font-weight: bold;
+    font-size: 48px;
+    padding: 20px;
+    color: rgb(39, 120, 255);
+    font-family: 'Orbitron', sans-serif;
+}
+
+h2, h3{
+    font-weight: bold;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    gap: 1%;
+    flex-wrap: wrap;
+    width: 90%;
+    margin: 0 auto;
+}
+
+.content-course {
+    color: #FFFFFF;
+    width: 30%;
+    background-color: #A3B2BF;
+    margin: 10px 0;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.content-course * {
+    margin: 6px 0;
+}
+
+
+footer {
+    padding: 20px 0;
+    text-align: center;
+    color: rgb(39, 120, 255);
+    font-size: 18px;
+    font-weight: 600;
+}
+
+footer p {
+    margin-bottom: 10px;
+}
+
+.content-contact{
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+}
+
+footer a {
+    text-decoration: none;
+    color: rgb(39, 120, 255);
+    transition: 0.7s;
+}
+
+footer a:hover {
+    color: rgb(39, 170, 255);
+}
+

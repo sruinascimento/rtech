@@ -4,6 +4,10 @@ import br.com.rtech.validation.Validate;
 
 public class Course {
 
+    public static final String PUBLIC_VISIBILITY = "PÚBLICA";
+    public static final String PRIVATE_VISIBILITY = "PRIVADA";
+
+    private Integer id;
     private String name;
     private String code;
     private int estimatedTimeCourseCompletion;
@@ -36,6 +40,10 @@ public class Course {
 
     public int getEstimatedTimeCourseCompletion () {
         return this.estimatedTimeCourseCompletion;
+    }
+
+    public String getVisibility() {
+        return this.isPublicVisibility() ? PUBLIC_VISIBILITY : PRIVATE_VISIBILITY;
     }
 
     public boolean isPublicVisibility() {
@@ -82,9 +90,17 @@ public class Course {
         this.subCategory = subCategory;
     }
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
     @Override
     public String toString() {
-        return "br.com.rtech.model.Course{" +
+        return "Course{" +
                 "name='" + this.name + '\'' +
                 ", code='" + this.code + '\'' +
                 ", estimatedTimeCourseCompletion=" + this.estimatedTimeCourseCompletion +

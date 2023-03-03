@@ -12,11 +12,11 @@ public class HTMLCategoryPageGeneratorService {
 
     public static void generateCategoryPage(List<Category> categories, List<Course> courses, List<SubCategory> subCategories) {
 
-        try (FileWriter fw = new FileWriter( "index.html")) {
+        try (FileWriter fw = new FileWriter("index.html")) {
             fw.write(getBeginHTML());
-            for (Category category: categories) {
+            for (Category category : categories) {
                 fw.write(getHTMLCategoryInfomation(category));
-                int totalCoursesByCategory =  getTotalCoursesByCategory(courses, category);
+                int totalCoursesByCategory = getTotalCoursesByCategory(courses, category);
                 fw.write(getHTmlTotalCoursesByCategory(totalCoursesByCategory));
                 int totalHoursCourseByCategory = getTotalHoursCourseByCategory(courses, category);
                 fw.write(getHTmlTotalHourCoursesByCategory(totalHoursCourseByCategory));
@@ -26,7 +26,7 @@ public class HTMLCategoryPageGeneratorService {
             fw.write(getFooterHtml());
             fw.write(getEndHTML());
             System.out.println("index.html created. Sucess \u2705");
-        }catch (IOException ex) {
+        } catch (IOException ex) {
             System.out.println(ex.getMessage());
             System.out.println("index.html was not created. Failed \u274C");
         }
@@ -34,26 +34,26 @@ public class HTMLCategoryPageGeneratorService {
 
     private static String getBeginHTML() {
         return """
-               <!DOCTYPE html>
-               <html lang="en">
-               <head>
-                   <meta charset="UTF-8">
-                   <link rel="stylesheet" href="reset.css">
-                   <link rel="stylesheet" href="style.css">
-                   <link rel="preconnect" href="https://fonts.googleapis.com">                   
-                   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-                   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
-                   <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
-                   <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@700&display=swap" rel="stylesheet">
-                   <script src="https://kit.fontawesome.com/34289682d8.js" crossorigin="anonymous"></script>
-                   <title> RTech | Categoria </title>
-               </head>
-               <body>
-                    <header>
-                        <h1> RTech </h1>
-                    </header>
-                    <main>
-                """;
+                <!DOCTYPE html>
+                <html lang="en">
+                <head>
+                    <meta charset="UTF-8">
+                    <link rel="stylesheet" href="reset.css">
+                    <link rel="stylesheet" href="style.css">
+                    <link rel="preconnect" href="https://fonts.googleapis.com">                   
+                    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+                    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
+                    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+                    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@700&display=swap" rel="stylesheet">
+                    <script src="https://kit.fontawesome.com/34289682d8.js" crossorigin="anonymous"></script>
+                    <title> RTech | Categoria </title>
+                </head>
+                <body>
+                     <header>
+                         <h1> RTech </h1>
+                     </header>
+                     <main>
+                 """;
     }
 
     private static String getEndHTML() {
@@ -70,7 +70,7 @@ public class HTMLCategoryPageGeneratorService {
         String categoryNameSelected = "";
         if (categoryName.equals("Programação")) categoryNameSelected = bannerProgramming;
         if (categoryName.equals("DevOps")) categoryNameSelected = bannerDevOps;
-        if(categoryName.equals("Business")) categoryNameSelected = bannerBusiness;
+        if (categoryName.equals("Business")) categoryNameSelected = bannerBusiness;
         return """
                 <div class="content-banner">
                     <img src="%s">
@@ -93,8 +93,8 @@ public class HTMLCategoryPageGeneratorService {
 
     private static int getTotalCoursesByCategory(List<Course> courses, Category category) {
         int total = 0;
-        for (Course course: courses) {
-            if ( course.getSubCategory().getCategory().getCode().equals(category.getCode()) ) total++;
+        for (Course course : courses) {
+            if (course.getSubCategory().getCategory().getCode().equals(category.getCode())) total++;
         }
         return total;
     }
@@ -110,8 +110,9 @@ public class HTMLCategoryPageGeneratorService {
 
     private static int getTotalHoursCourseByCategory(List<Course> courses, Category category) {
         int total = 0;
-        for (Course course: courses) {
-            if ( course.getSubCategory().getCategory().getCode().equals(category.getCode())) total += course.getEstimatedTimeCourseCompletion();
+        for (Course course : courses) {
+            if (course.getSubCategory().getCategory().getCode().equals(category.getCode()))
+                total += course.getEstimatedTimeCourseCompletion();
         }
         return total;
     }
@@ -127,7 +128,7 @@ public class HTMLCategoryPageGeneratorService {
 
     private static String getHtmlSubCategory(List<SubCategory> subCategories, Category category, List<Course> courses) {
         String subCategoriesHTML = "";
-        for (SubCategory subCategory: subCategories) {
+        for (SubCategory subCategory : subCategories) {
             if (subCategory.isActive() && subCategory.getCategory().getCode().equals(category.getCode())) {
                 subCategoriesHTML += """
                                     <h3> Subcategoria %s </h3>
@@ -135,7 +136,7 @@ public class HTMLCategoryPageGeneratorService {
                                     <p class="content-justify"> %s </p>
                                     <h4 class="style-subtitle"> Cursos </h4>
                                     <p class="content-justify"> %s </p>
-                        """.formatted(subCategory.getName(), (subCategory.getDescription().equals("")? "Sem descrição": subCategory.getDescription()), getCourseByCategory(subCategory, courses));
+                        """.formatted(subCategory.getName(), (subCategory.getDescription().equals("") ? "Sem descrição" : subCategory.getDescription()), getCourseByCategory(subCategory, courses));
             }
         }
         subCategoriesHTML += """
@@ -148,7 +149,7 @@ public class HTMLCategoryPageGeneratorService {
 
     private static String getCourseByCategory(SubCategory subCategory, List<Course> courses) {
         String coursesByCategory = "";
-        for (Course course: courses) {
+        for (Course course : courses) {
             if (course.getSubCategory().getCode().equals(subCategory.getCode())) {
                 coursesByCategory += " %s, ".formatted(course.getName());
             }
