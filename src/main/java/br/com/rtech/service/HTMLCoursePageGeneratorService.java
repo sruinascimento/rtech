@@ -16,18 +16,6 @@ public class HTMLCoursePageGeneratorService {
                 String idSubcategory = course[3];
                 String subcategoryName = course[4];
                 fileWriter.write(getDivContentCourse(idCourse, courseName, estimatedTimeCourseCompletion, idSubcategory, subcategoryName));
-//                fileWriter.write("<p>" + course[0] +"</p>");
-//                fileWriter.write("\n");
-//                fileWriter.write("<p>" + course[1] +"</p>");
-//                fileWriter.write("\n");
-//
-//                fileWriter.write("<p>" + course[2] +"</p>");
-//                fileWriter.write("\n");
-//
-//                fileWriter.write("<p>" + course[3] +"</p>");
-//                fileWriter.write("\n");
-//
-//                fileWriter.write("<p>" + course[4] +"</p>");
                 fileWriter.write("\n");
 
             }

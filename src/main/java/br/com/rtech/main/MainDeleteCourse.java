@@ -10,9 +10,9 @@ public class MainDeleteCourse {
         ConnectionFactory connectionFactory = new ConnectionFactory();
         try (Connection connection = connectionFactory.getConnection()) {
             var courseDao = new CourseDAO(connection);
-            courseDao.delete(6);
+            courseDao.delete("\"angular-cli\t\"");
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
     }
 }

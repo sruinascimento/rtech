@@ -100,7 +100,7 @@ public class Course {
 
     @Override
     public String toString() {
-        return "br.com.rtech.model.Course{" +
+        return "Course{" +
                 "name='" + this.name + '\'' +
                 ", code='" + this.code + '\'' +
                 ", estimatedTimeCourseCompletion=" + this.estimatedTimeCourseCompletion +

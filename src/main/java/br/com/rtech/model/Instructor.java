@@ -13,7 +13,7 @@ public class Instructor {
 
     @Override
     public String toString() {
-        return  "#### br.com.rtech.model.Instructor ####\n" +
-                "Name: " + this.name + "\n";
+        return  "Instructor{ \n" +
+                "name= '" + this.name + "\'\n";
     }
 }

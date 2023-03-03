@@ -8,7 +8,6 @@ import java.util.List;
 import java.util.Map;
 
 public class CreateSubCategoryService {
-    //, List<Category> categories param
     public static List<SubCategory> generateObjecSubCategory(String path, Map<String, Category> categories) {
         List<SubCategory> subCategories = new ArrayList<>();
         List<String[]> atributesSubCategory = ExtractorAtributesService.getAtributes(path);

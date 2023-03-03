@@ -15,7 +15,7 @@ public class MainUpdateCourseVisibility {
             var courseDao = new CourseDAO(connection);
             courseDao.updateCoursePrivateVisibilityToPublicVisibility();
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
     }
 }

@@ -33,8 +33,8 @@ public class CreateCourseService {
                 course.setDevelopedSkills(skills);
                 course.setSubCategory(subCategory);
                 courses.add(course);
-            } catch (ArrayIndexOutOfBoundsException exception) {
-                throw new RuntimeException(exception);
+            } catch (ArrayIndexOutOfBoundsException e) {
+                throw new RuntimeException(e);
             }
         }
         return courses;

@@ -8,11 +8,11 @@ public class MainAdvancedSQL {
     public static void main(String[] args) {
         ConnectionFactory connectionFactory = new ConnectionFactory();
         try (Connection connection = connectionFactory.getConnection()) {
-//            getNameAndOrderOfSubcategoriesHasCourse(connection);
+            getNameAndOrderOfSubcategoriesHasCourse(connection);
             getNameAndAmountOfInstructorHasMoreCourses(connection);
-           // getCategoryNameAndAmountoOfCoursesAndAmountHoursToConclusion(connection);
+            getCategoryNameAndAmountoOfCoursesAndAmountHoursToConclusion(connection);
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
 
     }
@@ -42,7 +42,7 @@ public class MainAdvancedSQL {
                 }
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
 
     }
@@ -68,7 +68,7 @@ public class MainAdvancedSQL {
                 }
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
     }
 
@@ -96,7 +96,7 @@ public class MainAdvancedSQL {
                 }
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
     }
 

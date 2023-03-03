@@ -27,8 +27,8 @@ public class CreateCategoryService {
                     category.setIconPath(icon);
                     category.setHtmlColorCode(color);
                     categories.add(category);
-                } catch (IllegalArgumentException exception) {
-                  throw new RuntimeException(exception);
+                } catch (IllegalArgumentException e) {
+                  throw new RuntimeException(e);
                 }
         }
         return categories;

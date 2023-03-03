@@ -31,7 +31,7 @@ public class Category extends  CategoryInformation {
 
     @Override
     public String toString() {
-        return "br.com.rtech.model.Category{" +
+        return "Category{" +
                 "iconPath='" + iconPath + '\'' +
                 ", htmlColorCode='" + htmlColorCode + '\'' +
                 '}' + super.toString();
