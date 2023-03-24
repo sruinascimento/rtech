@@ -1,6 +1,7 @@
 package br.com.rtech.service;
 
 import br.com.rtech.model.Course;
+import br.com.rtech.model.Instructor;
 import br.com.rtech.model.SubCategory;
 
 import java.util.ArrayList;
@@ -25,9 +26,8 @@ public class CreateCourseService {
                 String subcategoryCode = atributes[8];
                 SubCategory subCategory = subCategories.get(subcategoryCode);
                 if (subCategory == null) throw new RuntimeException("Invalid subcategory: " + subcategoryCode);
-                Course course = new Course(name, code, estimatedTimeCourseCompletion, instructorsName);
-                if (visibility.equals("PÚBLICA")) course.setPublicVisibility(true);
-                if (visibility.equals("PRIVADA")) course.setPublicVisibility(false);
+                Course course = new Course(name, code, estimatedTimeCourseCompletion, new Instructor(instructorsName));
+                course.setVisibility(visibility);
                 course.setTargetPublic(targetPublic);
                 course.setSyllabus(syllabus);
                 course.setDevelopedSkills(skills);

@@ -16,7 +16,7 @@ public class CourseDAO {
     public void save(Course course) {
         String sqlInstructor = "INSERT INTO instructor (name_instructor) VALUES (?);";
         try (PreparedStatement preparedStatement = connection.prepareStatement(sqlInstructor, Statement.RETURN_GENERATED_KEYS)) {
-            preparedStatement.setString(1, course.getInstructor().getName());
+            preparedStatement.setString(1, course.getInstructor());
             preparedStatement.execute();
             try (ResultSet resultSet = preparedStatement.getGeneratedKeys()) {
                 while (resultSet.next()) {
@@ -54,8 +54,8 @@ public class CourseDAO {
     public void updateCoursePrivateVisibilityToPublicVisibility() {
         String sql = "UPDATE course c SET c.public_visibility = ? WHERE c.public_visibility = ? ";
         try (PreparedStatement preparedStatement = this.connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
-            preparedStatement.setString(1, Course.PUBLIC_VISIBILITY);
-            preparedStatement.setString(2, Course.PRIVATE_VISIBILITY);
+            preparedStatement.setString(1, Course.PUBLICA);
+            preparedStatement.setString(2,  Course.PRIVADA);
             preparedStatement.execute();
             int linesUpdateds = preparedStatement.getUpdateCount();
             System.out.println("Register updated: " + linesUpdateds);
@@ -88,7 +88,7 @@ public class CourseDAO {
 
 
         try (PreparedStatement preparedStatement = this.connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
-            preparedStatement.setString(1, Course.PUBLIC_VISIBILITY);
+            preparedStatement.setString(1, Course.PUBLICA);
             preparedStatement.execute();
 
             try (ResultSet resultSet = preparedStatement.getResultSet()) {

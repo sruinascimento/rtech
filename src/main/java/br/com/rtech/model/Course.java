@@ -2,32 +2,54 @@ package br.com.rtech.model;
 
 import br.com.rtech.validation.Validate;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "course")
 public class Course {
 
-    public static final String PUBLIC_VISIBILITY = "PÚBLICA";
-    public static final String PRIVATE_VISIBILITY = "PRIVADA";
-
-    private Integer id;
+    public final static String PUBLICA = "PÚBLICA";
+    public final static String PRIVADA = "PRIVADA";
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    @Column(name = "name_course")
     private String name;
+    @Column(name = "code_course")
     private String code;
+    @Column(name = "estimated_time_course_completion", columnDefinition = "TINYINT")
     private int estimatedTimeCourseCompletion;
-    private boolean publicVisibility;
+    @Column(name = "public_visibility")
+    private String visibility;
+    @Column(name = "target_public", columnDefinition = "TEXT")
     private String targetPublic;
+    @ManyToOne
+    @JoinColumn(name = "id_instructor")
     private Instructor instructor;
+    @Column(name = "syllabus", columnDefinition = "TEXT")
     private String syllabus;
+
+    @Column(name = "developed_skills", columnDefinition = "TEXT")
     private String developedSkills;
+
+    @ManyToOne
+    @JoinColumn(name = "id_subcategory")
     private SubCategory subCategory;
 
 
-    public Course(String name, String code, int estimatedTimeCourseCompletion, String instructorsName) {
+    public Course(String name, String code, int estimatedTimeCourseCompletion, Instructor instructor) {
         Validate.validateText(name, "[a-zA-Zç\\sáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ:]{3,}", ErrorMessage.COURSE_NAME.getMessage());
         Validate.validateText(code, "[a-z0-9]+[a-z-0-9]*[a-z0-9]",ErrorMessage.COURSE_CODE.getMessage());
         Validate.validateNumberRange(estimatedTimeCourseCompletion, 1, 20, ErrorMessage.ESTIMATED_TIME_COURSE_COMPLETION.getMessage());
-        Validate.validateText(instructorsName, "[a-zA-Zç\\sáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ:]{3,}", ErrorMessage.INSTRUCTORS_NAME.getMessage());
         this.name = name;
         this.code = code;
         this.estimatedTimeCourseCompletion = estimatedTimeCourseCompletion;
-        this.instructor = new Instructor(instructorsName);
+        this.instructor = instructor;
+        this.visibility = PRIVADA;
+    }
+
+    public Course() {
+
     }
 
     public String getName() {
@@ -43,15 +65,19 @@ public class Course {
     }
 
     public String getVisibility() {
-        return this.isPublicVisibility() ? PUBLIC_VISIBILITY : PRIVATE_VISIBILITY;
+        return this.visibility;
     }
+
+
 
     public boolean isPublicVisibility() {
-        return this.publicVisibility;
+        return this.visibility.equals(PUBLICA);
     }
 
-    public void setPublicVisibility(boolean publicVisibility) {
-        this.publicVisibility = publicVisibility;
+    public void setVisibility(String publicVisibility) {
+        if (PUBLICA.equalsIgnoreCase(publicVisibility)) {
+            this.visibility = PUBLICA;
+        }
     }
 
     public String getTargetPublic() {
@@ -62,8 +88,12 @@ public class Course {
         this.targetPublic = targetPublic;
     }
 
-    public Instructor getInstructor() {
-        return this.instructor;
+    public String getInstructor() {
+        return this.instructor.getName();
+    }
+
+    public void setInstructor(Instructor instructor) {
+        this.instructor = instructor;
     }
 
     public String getSyllabus() {
@@ -90,11 +120,11 @@ public class Course {
         this.subCategory = subCategory;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -104,12 +134,12 @@ public class Course {
                 "name='" + this.name + '\'' +
                 ", code='" + this.code + '\'' +
                 ", estimatedTimeCourseCompletion=" + this.estimatedTimeCourseCompletion +
-                ", publicVisibility=" + this.publicVisibility +
+                ", publicVisibility=" + this.visibility +
                 ", targetPublic='" + this.targetPublic + '\'' +
                 ", instructor=" + this.instructor.getName() +
                 ", courseSyllabus='" + this.syllabus + '\'' +
-                ", developedSkills='" + this.developedSkills + '\'' +
-                this.subCategory.toString() +  '}';
+                ", developedSkills='" + this.developedSkills + '\'' + '}';
+//                this.subCategory.toString() +  '}';
     }
 
 }

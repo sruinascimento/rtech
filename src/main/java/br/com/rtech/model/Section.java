@@ -2,13 +2,26 @@ package br.com.rtech.model;
 
 import br.com.rtech.validation.Validate;
 
-public class Section {
+import javax.persistence.*;
 
+@Entity
+@Table(name = "section")
+public class Section {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    @Column(name = "name_section")
     private String name;
+    @Column(name = "code_section")
     private String code;
+    @Column(name = "order_section")
     private int order;
+    @Column(name = "is_active")
     private boolean active;
+    @Column(name = "is_test")
     private boolean test;
+    @ManyToOne
+    @JoinColumn(name = "id_course")
     private Course course;
 
     public Section(String name, String code, Course course) {
@@ -17,6 +30,9 @@ public class Section {
         this.name = name;
         this.code = code;
         this.course = course;
+    }
+
+    public Section() {
     }
 
     public String getName() {

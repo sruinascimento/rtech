@@ -9,7 +9,7 @@ public class CourseTest {
     @Test
     public void testCourseNameValid() {
         try {
-            new Course("Java POO", "java", 10, "Ploop");
+            new Course("Java POO", "java", 10, new Instructor("Ploop"));
         } catch (IllegalArgumentException exception) {
             exception.printStackTrace();
             fail();
@@ -19,23 +19,23 @@ public class CourseTest {
     @Test
     public void testNullCourseName() {
         assertThrows(IllegalArgumentException.class,
-                () -> new Course(null, "java", 10, "Ploop"));
+                () -> new Course(null, "java", 10, new Instructor("Ploop")));
     }
 
     @Test
     public void testCourseNameEmpty() {
-        assertThrows(IllegalArgumentException.class, () -> new Course("", "java", 10, "Ploop"));
+        assertThrows(IllegalArgumentException.class, () -> new Course("", "java", 10, new Instructor("Ploop")));
     }
 
     @Test
     public void testCourseNameBlankSpace() {
-        assertThrows(IllegalArgumentException.class, () -> new Course("     ", "java", 10, "Ploop"));
+        assertThrows(IllegalArgumentException.class, () -> new Course("     ", "java", 10, new Instructor("Ploop")));
     }
 
     @Test
     public void testCourseNameUpperCase() {
         try {
-            new Course("JAVA POO","java",10,"Ploop");
+            new Course("JAVA POO","java",10,new Instructor("Ploop"));
         } catch (IllegalArgumentException exception) {
             exception.printStackTrace();
             fail();
@@ -45,7 +45,7 @@ public class CourseTest {
     @Test
     public void testCourseNameLowerCase() {
         try {
-            new Course("java poo","java",10,"Ploop");
+            new Course("java poo","java",10,new Instructor("Ploop"));
         } catch (IllegalArgumentException exception) {
             exception.printStackTrace();
             fail();
@@ -54,18 +54,18 @@ public class CourseTest {
 
     @Test
     public void testCourseNameWithSpecialCharacters() {
-        assertThrows(IllegalArgumentException.class, () -> new Course("%$@%$%java poo","java",10,"Ploop"));
+        assertThrows(IllegalArgumentException.class, () -> new Course("%$@%$%java poo","java",10,new Instructor("Ploop")));
     }
 
     @Test
     public void testCourseNameWithNumbers() {
-        assertThrows(IllegalArgumentException.class, () -> new Course("1234Java poo","java",10,"Ploop"));
+        assertThrows(IllegalArgumentException.class, () -> new Course("1234Java poo","java",10,new Instructor("Ploop")));
     }
 
     @Test
     public void testValidCode() {
         try {
-            new Course("Java POO", "java-poo", 10, "Ploop");
+            new Course("Java POO", "java-poo", 10, new Instructor("Ploop"));
         } catch (IllegalArgumentException exception) {
             exception.printStackTrace();
             fail();
@@ -77,7 +77,7 @@ public class CourseTest {
         assertThrows(IllegalArgumentException.class, () -> new Course("Java Poo",
                 null,
                 10,
-                "Ploop"));
+                new Instructor("Ploop")));
     }
 
     @Test
@@ -85,7 +85,7 @@ public class CourseTest {
         assertThrows(IllegalArgumentException.class, () -> new Course("Java Poo",
                 "",
                 10,
-                "Ploop"));
+                new Instructor("Ploop")));
     }
 
     @Test
@@ -93,7 +93,7 @@ public class CourseTest {
         assertThrows(IllegalArgumentException.class, () -> new Course("Java Poo",
                 "    ",
                 10,
-                "Ploop"));
+                new Instructor("Ploop")));
     }
 
     @Test
@@ -101,13 +101,13 @@ public class CourseTest {
         assertThrows(IllegalArgumentException.class, () -> new Course("Java poo",
                 "ABCDE",
                 10,
-                "Ploop"));
+                new Instructor("Ploop")));
     }
 
     @Test
     public void testCodeLowerCase() {
         try {
-            new Course("Java poo", "abcde", 10, "Ploop");
+            new Course("Java poo", "abcde", 10, new Instructor("Ploop"));
         } catch (IllegalArgumentException exception) {
             exception.printStackTrace();
             fail();
@@ -118,13 +118,13 @@ public class CourseTest {
         assertThrows(IllegalArgumentException.class, () -> new Course("Java poo",
                 "!@#$abcde-123",
                 10,
-                "Ploop"));
+                new Instructor("Ploop")));
     }
 
     @Test
     public void testValidNumberEstimatedTimeCourseCompletion() {
         try {
-            new Course("Java POO", "java-poo", 10, "Ploop");
+            new Course("Java POO", "java-poo", 10, new Instructor("Ploop"));
         } catch (IllegalArgumentException exception) {
             exception.printStackTrace();
             fail();
@@ -136,7 +136,7 @@ public class CourseTest {
         assertThrows(IllegalArgumentException.class, () -> new Course("Java Poo",
                 "java-poo",
                 -1,
-                "Ploop"));
+                new Instructor("Ploop")));
     }
 
     @Test
@@ -145,7 +145,7 @@ public class CourseTest {
             new Course("Java Poo",
                     "java-poo",
                     1,
-                    "Ploop");
+                    new Instructor("Ploop"));
         } catch (IllegalArgumentException exception) {
             exception.printStackTrace();
             fail();
@@ -158,7 +158,7 @@ public class CourseTest {
             new Course("Java Poo",
                     "java-poo",
                     20,
-                    "Ploop");
+                    new Instructor("Ploop"));
         } catch (IllegalArgumentException exception) {
             exception.printStackTrace();
             fail();
@@ -170,13 +170,13 @@ public class CourseTest {
         assertThrows(IllegalArgumentException.class, () -> new Course("Java Poo",
                 "java-poo",
                 21,
-                "Ploop"));
+                new Instructor("Ploop")));
     }
 
     @Test
     public void testValidInstructorName() {
         try {
-            new Course("Java POO", "java-poo", 10, "Ploop");
+            new Course("Java POO", "java-poo", 10, new Instructor("Ploop"));
         } catch (IllegalArgumentException exception) {
             exception.printStackTrace();
             fail();
@@ -186,30 +186,19 @@ public class CourseTest {
     @Test
     public void testNullInstructorName() {
         assertThrows(IllegalArgumentException.class,
-                () -> new Course("Java POO", "java-poo", 10, null));
+                () -> new Course("Java POO", "java-poo", 10, new Instructor(null)));
     }
 
     @Test
     public void testEmptyInstructorName() {
         assertThrows(IllegalArgumentException.class,
-                () -> new Course("Java POO", "java-poo", 10, ""));
+                () -> new Course("Java POO", "java-poo", 10, new Instructor("")));
     }
 
     @Test
     public void testInstructorNameWithBlankSpaces() {
         assertThrows(IllegalArgumentException.class,
-                () -> new Course("Java POO", "java-poo", 10, "     "));
+                () -> new Course("Java POO", "java-poo", 10, new Instructor("     ")));
     }
 
-//    @Test
-//    public void testInstructorNameSpecialCharacters() {
-//        assertThrows(IllegalArgumentException.class,
-//                () -> new Course("Java POO", "java-poo", 10, "%¨&*#&Ploop"));
-//    }
-//
-//    @Test
-//    public  void testInstructorNameWithNumbers() {
-//        assertThrows(IllegalArgumentException.class,
-//                () -> new Course("Java POO", "java-poo", 10, "1234Ploop"));
-//    }
 }

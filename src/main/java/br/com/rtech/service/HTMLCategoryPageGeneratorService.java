@@ -2,6 +2,7 @@ package br.com.rtech.service;
 
 import br.com.rtech.model.Category;
 import br.com.rtech.model.Course;
+import br.com.rtech.model.StateActivation;
 import br.com.rtech.model.SubCategory;
 
 import java.io.FileWriter;
@@ -136,7 +137,7 @@ public class HTMLCategoryPageGeneratorService {
                                     <p class="content-justify"> %s </p>
                                     <h4 class="style-subtitle"> Cursos </h4>
                                     <p class="content-justify"> %s </p>
-                        """.formatted(subCategory.getName(), (subCategory.getDescription().equals("") ? "Sem descrição" : subCategory.getDescription()), getCourseByCategory(subCategory, courses));
+                        """.formatted(subCategory.getName(), (subCategory.getDescription()), getCourseByCategory(subCategory, courses));
             }
         }
         subCategoriesHTML += """

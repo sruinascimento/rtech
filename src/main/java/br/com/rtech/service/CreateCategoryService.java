@@ -22,8 +22,8 @@ public class CreateCategoryService {
                     Category category = new Category(name, code);
                     category.setOrder(order);
                     category.setDescription(description);
-                    if (status.equals("ATIVA")) category.setActive(true);
-                    if (status.equals("INATIVA")) category.setActive(false);
+                    category.setActive(status);
+                    category.setActive(status);
                     category.setIconPath(icon);
                     category.setHtmlColorCode(color);
                     categories.add(category);
