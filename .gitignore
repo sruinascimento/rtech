@@ -3,4 +3,3 @@ out
 *.iml
 target
 src/main/resources/.properties
-src/main/resources/META-INF
