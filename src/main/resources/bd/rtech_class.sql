@@ -62,8 +62,8 @@ CREATE TABLE section(
     name_section VARCHAR(100) NOT NULL,
     code_section VARCHAR(100) NOT NULL, 
     order_section INT,
-    is_active TINYINT DEFAULT 0,
-    is_test TINYINT DEFAULT 0,
+    is_active bit DEFAULT 0,
+    is_test bit DEFAULT 0,
     id_course BIGINT NOT NULL,
     
     FOREIGN KEY (id_course)
