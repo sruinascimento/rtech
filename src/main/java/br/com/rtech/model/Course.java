@@ -7,9 +7,6 @@ import javax.persistence.*;
 @Entity
 @Table(name = "course")
 public class Course {
-
-    public final static String PUBLICA = "PÚBLICA";
-    public final static String PRIVADA = "PRIVADA";
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -20,10 +17,11 @@ public class Course {
     @Column(name = "estimated_time_course_completion", columnDefinition = "TINYINT")
     private int estimatedTimeCourseCompletion;
     @Column(name = "public_visibility")
-    private String visibility;
+    @Enumerated(EnumType.STRING)
+    private CourseVisibility visibility;
     @Column(name = "target_public", columnDefinition = "TEXT")
     private String targetPublic;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_instructor")
     private Instructor instructor;
     @Column(name = "syllabus", columnDefinition = "TEXT")
@@ -32,7 +30,7 @@ public class Course {
     @Column(name = "developed_skills", columnDefinition = "TEXT")
     private String developedSkills;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_subcategory")
     private SubCategory subCategory;
 
@@ -45,7 +43,7 @@ public class Course {
         this.code = code;
         this.estimatedTimeCourseCompletion = estimatedTimeCourseCompletion;
         this.instructor = instructor;
-        this.visibility = PRIVADA;
+        this.visibility = CourseVisibility.PRIVADA;
     }
 
     public Course() {
@@ -64,19 +62,19 @@ public class Course {
         return this.estimatedTimeCourseCompletion;
     }
 
-    public String getVisibility() {
+    public CourseVisibility getVisibility() {
         return this.visibility;
     }
 
 
 
     public boolean isPublicVisibility() {
-        return this.visibility.equals(PUBLICA);
+        return this.visibility.equals(CourseVisibility.PUBLICA);
     }
 
     public void setVisibility(String publicVisibility) {
-        if (PUBLICA.equalsIgnoreCase(publicVisibility)) {
-            this.visibility = PUBLICA;
+        if (CourseVisibility.PRIVADA.toString().equalsIgnoreCase(publicVisibility)) {
+            this.visibility = CourseVisibility.PUBLICA;
         }
     }
 
@@ -139,7 +137,6 @@ public class Course {
                 ", instructor=" + this.instructor.getName() +
                 ", courseSyllabus='" + this.syllabus + '\'' +
                 ", developedSkills='" + this.developedSkills + '\'' + '}';
-//                this.subCategory.toString() +  '}';
     }
 
 }
