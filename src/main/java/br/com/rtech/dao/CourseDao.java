@@ -1,6 +1,7 @@
 package br.com.rtech.dao;
 
 import br.com.rtech.model.Course;
+import br.com.rtech.model.CourseVisibility;
 
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
@@ -47,25 +48,24 @@ public class CourseDao {
     public List<Course> gePrivatetCourses() {
         String jpql = "SELECT c FROM Course c WHERE c.visibility = :publicVisibility";
         return this.entityManager.createQuery(jpql, Course.class)
-                .setParameter("publicVisibility", Course.PRIVADA)
+                .setParameter("publicVisibility", CourseVisibility.PRIVADA)
                 .getResultList();
     }
 
     public void updateCoursesPrivateToPublic() {
-        List<Course> courses = gePrivatetCourses();
-        int updatedCourses = 0;
-        for (Course course : courses) {
-            course.setVisibility(Course.PUBLICA);
-            this.entityManager.merge(course);
-            updatedCourses++;
-        }
+        String jpql = "UPDATE Course c SET c.visibility = :newVisibility WHERE c.visibility = :oldVisibility";
+        int updatedCourses = this.entityManager.createQuery(jpql)
+                .setParameter("newVisibility", CourseVisibility.PUBLICA)
+                .setParameter("oldVisibility", CourseVisibility.PRIVADA)
+                .executeUpdate();
         System.out.println("Updated courses:  " + updatedCourses);
+
     }
 
     public List<Course> getPublicCourses() {
         String jpql = "SELECT c From Course c WHERE c.visibility = :visibility";
         return this.entityManager.createQuery(jpql, Course.class)
-                .setParameter("visibility", Course.PUBLICA)
+                .setParameter("visibility", CourseVisibility.PUBLICA)
                 .getResultList();
     }
 }

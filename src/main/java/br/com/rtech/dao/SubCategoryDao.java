@@ -13,7 +13,7 @@ public class SubCategoryDao {
         this.entityManager = entityManager;
     }
 
-    public List<SubCategory> geActivetSubcategories() {
+    public List<SubCategory> getActivetSubcategories() {
         String jpql = "SELECT s FROM SubCategory s WHERE s.active = :active ORDER BY s.order";
         return this.entityManager.createQuery(jpql, SubCategory.class)
                 .setParameter("active", StateActivation.ATIVA)
