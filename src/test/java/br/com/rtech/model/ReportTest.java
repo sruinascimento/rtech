@@ -45,7 +45,7 @@ public class ReportTest {
 
     @Test
     public void testGetActiveSubcategory() {
-        List<SubCategory> activetSubcategories = subCategoryDao.geActivetSubcategories();
+        List<SubCategory> activetSubcategories = subCategoryDao.getActivetSubcategories();
         assertFalse(activetSubcategories.isEmpty());
         boolean allActiveSubcategory = activetSubcategories.stream()
                 .allMatch(SubCategory::isActive);
