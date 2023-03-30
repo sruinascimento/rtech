@@ -6,7 +6,6 @@ import br.com.rtech.dao.SubCategoryDao;
 import br.com.rtech.model.Category;
 import br.com.rtech.model.Course;
 import br.com.rtech.model.SubCategory;
-import br.com.rtech.service.HTMLCategoryPageGeneratorService;
 import br.com.rtech.service.HTMLReportGeneratorService;
 import br.com.rtech.util.JPAUtil;
 
@@ -23,10 +22,9 @@ public class MainReportJPA {
         entityManager.getTransaction().begin();
 
         List<Category> activeCategories = categoryDao.getActiveCategories();
-        List<SubCategory> activeSubcategories = subCategoryDao.geActivetSubcategories();
+        List<SubCategory> activeSubcategories = subCategoryDao.getActivetSubcategories();
         List<Course> publicCourses = courseDao.getPublicCourses();
         List<String> namesOfSubcategoriesHasntDescription = subCategoryDao.getNameOfSubcategoriesHasntDescription();
-//        System.out.println(activeCategories);
         HTMLReportGeneratorService.generateReportPage(activeCategories, activeSubcategories, publicCourses, namesOfSubcategoriesHasntDescription);
 
 
