@@ -18,7 +18,7 @@ public class UtilityMethodService {
 
     public static List<Category> getActiveCategories(List<Category> categories) {
         return categories.stream()
-                .filter(Category::isActive)
+                .filter(category -> category.isActive())
                 .toList();
     }
 
@@ -29,7 +29,7 @@ public class UtilityMethodService {
 
     public static List<String> getUniqueInstructrorsName(List<Course> courses) {
         return courses.stream()
-                .map(course -> course.getInstructor().getName())
+                .map(course -> course.getInstructor())
                 .distinct()
                 .toList();
     }
@@ -42,6 +42,6 @@ public class UtilityMethodService {
 
     public static Map<String, Long> getInstructorsAndYoursTotalOfCourse(List<Course> courses) {
         return courses.stream()
-                .collect(Collectors.groupingBy(course -> course.getInstructor().getName(), Collectors.counting()));
+                .collect(Collectors.groupingBy(course -> course.getInstructor(), Collectors.counting()));
     }
 }

@@ -1,96 +1,51 @@
 ############ category ############
-# insert data on table category_information
 
-INSERT INTO category_information(
-	name_category, code_category, order_category, 
-	description_category, is_active) 
-VALUES(
-	'Programação', 'programacao', 1, 
-    'Programe nas principais linguagens e plataformas. Iniciantes são bem vindos nos cursos de lógica e JavaScript.',
-    'ATIVA'
-);
+# insert data on table category
+INSERT INTO category(name_category, code_category, order_category,
+                     description_category, is_active, icon_path, html_color_code)
+VALUE('Programação', 'programacao', 1,
+      'Programe nas principais linguagens e plataformas. Iniciantes são bem vindos nos cursos de lógica e JavaScript.',
+      'ATIVA','https://www.alura.com.br/assets/api/formacoes/categorias/512/programacao-transparent.png', '#00c86f');
 
-INSERT INTO category_information(
-	name_category, code_category, order_category, 
-	description_category, is_active) 
-VALUES(
-	'DevOps', 'devops', 2, 
-    'Aprenda Git. Entenda a entrega contínua. Estude Linux. Gerencie servidores na nuvem. Explore o mundo de Internet das coisas e da robótica.',
-    'ATIVA'
-);
+INSERT INTO category(name_category, code_category, order_category,
+                     description_category, is_active, icon_path, html_color_code)
+VALUE('DevOps', 'devops', 2,
+       'Aprenda Git. Entenda a entrega contínua. Estude Linux. Gerencie servidores na nuvem. Explore o mundo de Internet das coisas e da robótica.',
+       'ATIVA', 'https://www.alura.com.br/assets/api/formacoes/categorias/512/devops-transparent.png', '##f16165');
 
-INSERT INTO category_information(
-	name_category, code_category,
-	description_category) 
-VALUES(
-	'Business', 'business',
-    'Agilidade. Práticas de gestão. Vendas. Liderança.'
-);
-
-# insert data on table category, using the foreign key of data above.
-INSERT INTO category(icon_path, html_color_code, id_category_information) 
-VALUE('https://www.alura.com.br/assets/api/formacoes/categorias/512/programacao-transparent.png', '#00c86f', 1);
-
-INSERT INTO category(icon_path, html_color_code, id_category_information) 
-VALUE('https://www.alura.com.br/assets/api/formacoes/categorias/512/devops-transparent.png', '##f16165', 2);
-
-INSERT INTO category(icon_path, html_color_code, id_category_information) 
-VALUE('https://www.alura.com.br/assets/api/formacoes/categorias/512/inovacao-gestao-transparent.png', '#ff8c2a', 3);
+INSERT INTO category(name_category, code_category,
+                     description_category, icon_path, html_color_code)
+VALUE('Business', 'business',
+      'Agilidade. Práticas de gestão. Vendas. Liderança.', 'https://www.alura.com.br/assets/api/formacoes/categorias/512/inovacao-gestao-transparent.png', '#ff8c2a');
 
 # Data Visualization
-SELECT * FROM category_information
-INNER JOIN category
-ON category_information.id = category.id_category_information;
+SELECT * FROM category;
 
 
 ############ subcategory ############
 
-INSERT INTO category_information(
-	name_category, code_category, order_category, 
-	description_category, is_active) 
-VALUES(
-	'Java', 'java', 1, 
-    'Java é uma grande plataforma presente em todo lugar: de corporações à bancos e governo. Desenvolva aplicações robustas com um back-end e construa APIs.',
-    'ATIVA'
-);
+INSERT INTO subcategory(name_subcategory, code_subcategory, order_subcategory,
+                        description_subcategory, is_active, id_category)
+VALUES ('Java', 'java', 1,
+        'Java é uma grande plataforma presente em todo lugar: de corporações à bancos e governo. Desenvolva aplicações robustas com um back-end e construa APIs.',
+        'ATIVA', 1);
 
-INSERT INTO subcategory(id_category_information, id_category)
-VALUES (4, 1);
+INSERT INTO subcategory(name_subcategory, code_subcategory, order_subcategory, is_active, id_category)
+VALUES ('Java e Persistência', 'java-e-persistencia', 2, 'ATIVA', 1);
 
-INSERT INTO category_information(
-	name_category, code_category, order_category, is_active) 
-VALUES(	'Java e Persistência', 'java-e-persistencia', 2, 'ATIVA');
+INSERT INTO subcategory(name_subcategory, code_subcategory, order_subcategory, is_active, description_subcategory, id_category)
+VALUES ('PHP', 'php', 3, 'ATIVA', 'PHP é uma das linguagens mais utilizadas.', 1);
 
-INSERT INTO subcategory(id_category_information, id_category)
-VALUES (5, 1);
+INSERT INTO subcategory(name_subcategory, code_subcategory, id_category)
+VALUES ('COBOL', 'cobol',  1);
 
-INSERT INTO category_information(
-	name_category, code_category, order_category, is_active, description_category) 
-VALUES(	'PHP', 'php', 3, 'ATIVA', 'PHP é uma das linguagens mais utilizadas.');
-
-INSERT INTO subcategory(id_category_information, id_category)
-VALUES (6, 1);
-
-INSERT INTO category_information(
-	name_category, code_category, description_category) 
-VALUES(	'COBOL', 'cobol', 'As ferramentas mais utilizadas para desenvolvimento: controle de versão com Git e Github além de build da aplicação através de Maven.');
-
-INSERT INTO subcategory(id_category_information, id_category)
-VALUES (7, 1);
-
-INSERT INTO category_information(
-	name_category, code_category, order_category, is_active, description_category) 
-VALUES(	'Builds e Controle de versão', 'builds-e-controle-de-versao', 1, 'ATIVA', 
-'As ferramentas mais utilizadas para desenvolvimento: controle de versão com Git e Github além de build da aplicação através de Maven.');
-
-INSERT INTO subcategory(id_category_information, id_category)
-VALUES(8, 2);
+INSERT INTO subcategory(name_subcategory, code_subcategory, order_subcategory, is_active, description_subcategory, id_category)
+VALUES('Builds e Controle de versão', 'builds-e-controle-de-versao', 1, 'ATIVA',
+       'As ferramentas mais utilizadas para desenvolvimento: controle de versão com Git e Github além de build da aplicação através de Maven.', 2);
 
 # Data Visualization
-#name_category, code_category, order_category, description_category, is_active, id_category
-SELECT * FROM category_information
-INNER JOIN subcategory
-ON category_information.id = subcategory.id_category_information;
+SELECT * FROM subcategory;
+
 
 
 ############ course ############
@@ -99,7 +54,7 @@ INSERT INTO instructor(name_instructor) VALUES('Mario Souto');
 
 INSERT INTO course(
 	name_course, code_course, estimated_time_course_completion, public_visibility, target_public,
-	id_instructor, syllabus, developed_skill, id_subcategory)
+	id_instructor, syllabus, developed_skills, id_subcategory)
 VALUES(
 	'Git e Github para Sobrevivência', 'git-e-github-para-sobrevivencia', 6, 'PÚBLICA', 
     'Desenvolvedores em qualquer linguagem ou plataforma que desejam mais segurança para seus projetos com as ferramentas de controle de versão Git e GitHub.',
@@ -113,7 +68,7 @@ INSERT INTO instructor(name_instructor) VALUES('Rodrigo Ferreira');
 
 INSERT INTO course(
 	name_course, code_course, estimated_time_course_completion, public_visibility, target_public,
-	id_instructor, syllabus, developed_skill, id_subcategory)
+	id_instructor, syllabus, developed_skills, id_subcategory)
 VALUES(
 	'Java e JPA: Consultas avançadas performance e modelos complexos', 'java-jpa-consultas-avancadas-performance-modelos-complexos', 10, 'PÚBLICA', 
     'Pessoas desenvolvedoras que já conhecem o básico de JPA e queiram aprofundar os conhecimentos.',
@@ -126,7 +81,7 @@ INSERT INTO instructor(name_instructor) VALUES('Paulo Silveira');
 
 INSERT INTO course(
 	name_course, code_course, estimated_time_course_completion, public_visibility, target_public,
-	id_instructor, syllabus, developed_skill, id_subcategory)
+	id_instructor, syllabus, developed_skills, id_subcategory)
 VALUES(
 	'Java OO: Introdução à Orientação a Objetos', 'java-introducao-orientacao-objetos', 8, 'PÚBLICA', 
     'Desenvolvedores que estão começando com Java e querem aprender mais sobre OO.',
@@ -138,7 +93,7 @@ VALUES(
 
 INSERT INTO course(
 	name_course, code_course, estimated_time_course_completion, public_visibility, target_public,
-	id_instructor, syllabus, developed_skill, id_subcategory)
+	id_instructor, syllabus, developed_skills, id_subcategory)
 VALUES(
 	'Java JRE e JDK: Escreva o seu primeiro código com Eclipse', 'java-primeiros-passos', 8, 'PÚBLICA', 
     'Desenvolvedores que querem começar com a linguagem Java.',

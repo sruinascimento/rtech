@@ -2,12 +2,25 @@ package br.com.rtech.model;
 
 import br.com.rtech.validation.Validate;
 
-public class Activity {
+import javax.persistence.*;
 
+@Entity
+@Table(name = "activity")
+public class Activity {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    @Column(name = "title")
     private String title;
+    @Column(name = "code_activity")
     private String code;
+    @Column(name = "is_inactive", columnDefinition = "TINYINT")
     private boolean active;
+    @ManyToOne
+    @JoinColumn(name = "id_activity_type")
     private ActivityType type;
+    @ManyToOne
+    @JoinColumn(name = "id_section")
     private Section section;
 
     public Activity(String title, String code, Section section) {
@@ -17,6 +30,18 @@ public class Activity {
         this.title = title;
         this.code = code;
         this.section = section;
+    }
+
+    public Activity() {
+
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getTitle() {

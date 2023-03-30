@@ -1,6 +1,7 @@
 package br.com.rtech.dao;
 
 import br.com.rtech.model.Course;
+import br.com.rtech.model.CourseVisibility;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -16,7 +17,7 @@ public class CourseDAO {
     public void save(Course course) {
         String sqlInstructor = "INSERT INTO instructor (name_instructor) VALUES (?);";
         try (PreparedStatement preparedStatement = connection.prepareStatement(sqlInstructor, Statement.RETURN_GENERATED_KEYS)) {
-            preparedStatement.setString(1, course.getInstructor().getName());
+            preparedStatement.setString(1, course.getInstructor());
             preparedStatement.execute();
             try (ResultSet resultSet = preparedStatement.getGeneratedKeys()) {
                 while (resultSet.next()) {
@@ -28,7 +29,7 @@ public class CourseDAO {
                         preparedStatement1.setString(1, course.getName());
                         preparedStatement1.setString(2, course.getCode());
                         preparedStatement1.setInt(3, course.getEstimatedTimeCourseCompletion());
-                        preparedStatement1.setString(4, course.getVisibility());
+                        preparedStatement1.setString(4, course.getVisibility().toString());
                         preparedStatement1.setInt(5, id);
 
                         preparedStatement1.execute();
@@ -54,8 +55,8 @@ public class CourseDAO {
     public void updateCoursePrivateVisibilityToPublicVisibility() {
         String sql = "UPDATE course c SET c.public_visibility = ? WHERE c.public_visibility = ? ";
         try (PreparedStatement preparedStatement = this.connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
-            preparedStatement.setString(1, Course.PUBLIC_VISIBILITY);
-            preparedStatement.setString(2, Course.PRIVATE_VISIBILITY);
+            preparedStatement.setString(1, CourseVisibility.PUBLICA.toString());
+            preparedStatement.setString(2,  CourseVisibility.PRIVADA.toString());
             preparedStatement.execute();
             int linesUpdateds = preparedStatement.getUpdateCount();
             System.out.println("Register updated: " + linesUpdateds);
@@ -88,7 +89,7 @@ public class CourseDAO {
 
 
         try (PreparedStatement preparedStatement = this.connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
-            preparedStatement.setString(1, Course.PUBLIC_VISIBILITY);
+            preparedStatement.setString(1, CourseVisibility.PUBLICA.toString());
             preparedStatement.execute();
 
             try (ResultSet resultSet = preparedStatement.getResultSet()) {

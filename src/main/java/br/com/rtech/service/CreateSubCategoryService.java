@@ -25,8 +25,8 @@ public class CreateSubCategoryService {
             SubCategory subCategory = new SubCategory(name, code);
             subCategory.setOrder(order);
             subCategory.setDescription(description);
-            if (status.equals("ATIVA")) subCategory.setActive(true);
-            if (status.equals("INATIVA")) subCategory.setActive(false);
+            subCategory.setActive(status);
+            subCategory.setActive(status);
             subCategory.setCategory(category);
             subCategories.add(subCategory);
         }

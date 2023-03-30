@@ -35,7 +35,6 @@ h2{
 main {
     display: flex;
     justify-content: center;
-    gap: 1%;
 }
 
 section {
@@ -86,6 +85,10 @@ section img {
     height: 270px;
     object-fit: cover;
     border-radius: 20px 20px 0px 0px;
+}
+
+strong {
+    font-weight: bold;
 }
 
 footer {

@@ -2,12 +2,21 @@ package br.com.rtech.model;
 
 import br.com.rtech.validation.Validate;
 
-public class Question extends ActivityType {
+import javax.persistence.*;
 
-    private OptionQuestion type = OptionQuestion.MULTIPLES_CHOICES;
+@Entity
+@Table(name = "question")
+public class Question extends ActivityType {
+    @Column(name = "type_question")
+    @Enumerated(EnumType.STRING)
+    private OptionQuestion type;
 
     public Question(String enunciate) {
         super(enunciate);
+        type = OptionQuestion.MULTIPLES_CHOICES;
+    }
+
+    public Question() {
     }
 
     public OptionQuestion getType() {
