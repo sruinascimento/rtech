@@ -7,6 +7,8 @@
     <groupId>br.com.rtech</groupId>
     <artifactId>rtech</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <packaging>war</packaging>
+
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
@@ -48,6 +50,19 @@
             <version>5.4.17.Final</version>
         </dependency>
 
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>4.0.1</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/jstl/jstl -->
+        <dependency>
+            <groupId>jstl</groupId>
+            <artifactId>jstl</artifactId>
+            <version>1.2</version>
+        </dependency>
     </dependencies>
 
     <build>
