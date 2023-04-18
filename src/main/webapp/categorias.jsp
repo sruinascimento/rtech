@@ -1,7 +1,6 @@
-<%@ page import="br.com.rtech.model.Category" %>
-<%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 
 <html>
 <head>
@@ -15,18 +14,16 @@
     <h1> RTech - Categorias</h1>
 </header>
 <main>
-    <%
-        List<Category> categories = (List<Category>) request.getAttribute("categories");
-        for (Category category : categories) {
-    %>
-    <section style="background-color: <%=category.getHtmlColorCode()%>">
-        <img src="<%=category.getIconPath()%>">
-        <h3><%=category.getName()%>
+
+    <c:forEach items="${categories}" var="category">
+    <section style="background-color: ${category.getHtmlColorCode()}">
+        <img src="${category.getIconPath()}">
+        <h3>${category.getName()}
         </h3>
-        <p><%=category.getDescription()%>
+        <p>${category.getDescription()}
         </p>
     </section>
-    <%}%>
+    </c:forEach>
 </main>
 
 <footer>
