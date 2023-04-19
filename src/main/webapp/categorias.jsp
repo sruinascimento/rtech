@@ -18,10 +18,11 @@
     <c:forEach items="${categories}" var="category">
     <section style="background-color: ${category.getHtmlColorCode()}">
         <img src="${category.getIconPath()}">
-        <h3>${category.getName()}
+        <h3>${category.name}
         </h3>
-        <p>${category.getDescription()}
+        <p>${category.description}
         </p>
+        <a href="/listaCategoria?id=${category.id}" class="atualizacao__dados">atualizar</a>
     </section>
     </c:forEach>
 </main>

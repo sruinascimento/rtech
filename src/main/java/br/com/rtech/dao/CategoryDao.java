@@ -19,4 +19,18 @@ public class CategoryDao {
                 .setParameter("active", StateActivation.ATIVA)
                 .getResultList();
     }
+
+    public List<Category> getCategories() {
+        String jpql = "SELECT c FROM Category c ORDER BY c.order";
+        return this.entityManager.createQuery(jpql, Category.class)
+                .getResultList();
+    }
+
+    public void insert(Category category) {
+        this.entityManager.persist(category);
+    }
+
+    public Category getCategoryById(Long id) {
+        return this.entityManager.find(Category.class, id);
+    }
 }

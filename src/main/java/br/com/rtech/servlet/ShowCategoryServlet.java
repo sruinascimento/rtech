@@ -11,20 +11,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.List;
 
-@WebServlet(urlPatterns = "/listaCategorias")
-public class CategoryServlet extends HttpServlet {
-
+@WebServlet(urlPatterns = "/listaCategoria")
+public class ShowCategoryServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) {
-        CategoryDao categoryDao = new CategoryDao(JPAUtil.getEntityManager());
-        List<Category> categories = categoryDao.getCategories();
+        EntityManager entityManager = JPAUtil.getEntityManager();
+        CategoryDao categoryDao = new CategoryDao(entityManager);
         try {
-            req.setAttribute("categories", categories);
-            req.getRequestDispatcher("/categorias.jsp").forward(req, resp);
-        } catch (ServletException | IOException e) {
+            Long id = Long.valueOf(req.getParameter("id"));
+            Category category = categoryDao.getCategoryById(id);
+            req.setAttribute("category", category);
+            req.getRequestDispatcher("/altera-categoria.jsp")
+                    .forward(req, resp);
+        } catch (NumberFormatException | IOException | ServletException e) {
             throw new RuntimeException(e);
         }
     }

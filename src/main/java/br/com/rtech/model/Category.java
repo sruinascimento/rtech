@@ -24,7 +24,7 @@ public class Category {
     private StateActivation active;
     @NotNull
     @Column(name = "order_category")
-    private int order;
+    private Integer order;
     @Column(name = "icon_path")
     private String iconPath;
     @Column(name = "html_color_code")
