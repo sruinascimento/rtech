@@ -10,31 +10,32 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
 
-@WebServlet(urlPatterns = "/alteraCategoria")
-public class UpdateCategoryServlet extends HttpServlet {
+@WebServlet("/alteraStatusCategoria")
+public class UpdateStatusCategoryServlet extends HttpServlet {
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp)  {
-
-        try {
-            Long id = Long.valueOf(req.getParameter("code"));
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp){
+          try {
+            Long id = Long.valueOf(req.getParameter("id"));
+            String status = req.getParameter("status").toUpperCase().trim();
             EntityManager entityManager = JPAUtil.getEntityManager();
             CategoryDao categoryDao = new CategoryDao(entityManager);
             Category category = categoryDao.getCategoryById(id);
-
             if (category != null) {
-                category.setName(req.getParameter("name"));
-                category.setCode(req.getParameter("code"));
-                category.setHtmlColorCode(req.getParameter("color"));
-                category.setDescription(req.getParameter("description"));
+                category.toggleCategoryStatus(status);
                 entityManager.getTransaction().begin();
                 categoryDao.update(category);
                 entityManager.getTransaction().commit();
                 entityManager.close();
-                resp.sendRedirect("/listaCategorias");
+            } else {
+                PrintWriter out = resp.getWriter();
+                out.println("Categoria Inválida");
             }
+
         } catch (NumberFormatException | IOException e) {
             throw new RuntimeException(e);
         }
+
     }
 }

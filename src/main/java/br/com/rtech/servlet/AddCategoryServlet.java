@@ -23,19 +23,18 @@ public class AddCategoryServlet extends HttpServlet {
         String htmlColorCode = req.getParameter("color");
         String urlIcon = req.getParameter("icon");
         String description = req.getParameter("description");
-
-        Category category = new Category(name, code);
-        category.setHtmlColorCode(htmlColorCode);
-        category.setIconPath(urlIcon);
-        category.setDescription(description);
-
-        entityManager.getTransaction().begin();
-        categoryDao.insert(category);
-        entityManager.getTransaction().commit();
-
         try {
+            Category category = new Category(name, code);
+            category.setHtmlColorCode(htmlColorCode);
+            category.setIconPath(urlIcon);
+            category.setDescription(description);
+
+            entityManager.getTransaction().begin();
+            categoryDao.insert(category);
+            entityManager.getTransaction().commit();
+
             resp.sendRedirect("/listaCategorias");
-        } catch (IOException e) {
+        } catch (IOException | RuntimeException e) {
             throw new RuntimeException(e);
         }
     }

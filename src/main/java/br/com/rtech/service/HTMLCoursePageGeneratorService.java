@@ -7,7 +7,7 @@ import java.util.List;
 
 public class HTMLCoursePageGeneratorService {
     public static void generateCoursePage(List<String[]> courses) {
-        try (FileWriter fileWriter = new FileWriter("course.html")) {
+        try (FileWriter fileWriter = new FileWriter("src/main/webapp/course.jsp")) {
             fileWriter.write(getBeginHTML());
             for (String[] course : courses) {
                 String idCourse = course[0];
@@ -21,10 +21,10 @@ public class HTMLCoursePageGeneratorService {
             }
             fileWriter.write(getFooterHtml());
             fileWriter.write(getEndHTML());
-            System.out.println("course.html created. Sucess \u2705");
+            System.out.println("course.jsp created. Sucess \u2705");
         } catch (IOException e) {
             e.printStackTrace();
-            System.out.println("course.html was not created. Failed \u274C");
+            System.out.println("course.jsp was not created. Failed \u274C");
         }
     }
     private static String getBeginHTML() {
@@ -33,8 +33,8 @@ public class HTMLCoursePageGeneratorService {
                <html lang="en">
                <head>
                    <meta charset="UTF-8">
-                   <link rel="stylesheet" href="reset.css">
-                   <link rel="stylesheet" href="course.css">
+                   <link rel="stylesheet" href="styles/reset.css">
+                   <link rel="stylesheet" href="styles/course.css">
                    <link rel="preconnect" href="https://fonts.googleapis.com">                   
                    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
                    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
@@ -80,7 +80,7 @@ public class HTMLCoursePageGeneratorService {
                             <p> Id do curso = %s </p>
                             <h3> Nome do curso = %s </h3>
                             <p>  <i class="fa-solid fa-hourglass-half"></i> %s horas para conclusão </p>
-                            <p> Id da subcategoria = %s </>
+                            <p> Id da subcategoria = %s </p>
                             <h4> Nome da subcategoria = %s </h4>
                         </div>
                 """.formatted(idCourse, courseName, estimatedTimeCourseCompletion, subcategoryId, subcategoryName);

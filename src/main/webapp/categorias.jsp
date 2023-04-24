@@ -5,6 +5,7 @@
 <html>
 <head>
     <title>Categorias</title>
+    <meta charset="UTF-8">
     <link rel="stylesheet" href="styles/reset.css">
     <link rel="stylesheet" href="styles/category-style.css">
     <script src="https://kit.fontawesome.com/34289682d8.js" crossorigin="anonymous"></script>
@@ -20,9 +21,12 @@
         <img src="${category.getIconPath()}">
         <h3>${category.name}
         </h3>
+        <h4>Id: ${category.id}</h4>
         <p>${category.description}
         </p>
-        <a href="/listaCategoria?id=${category.id}" class="atualizacao__dados">atualizar</a>
+        <a href="/listaCategoria?id=${category.id}" class="atualizacao__dados">atualizar</a></br>
+
+        <button id="button_status"> ${category.getActive()} </button>
     </section>
     </c:forEach>
 </main>
@@ -38,5 +42,6 @@
         </a>
     </div>
 </footer>
+<script src="script/main.js"></script>
 </body>
 </html>

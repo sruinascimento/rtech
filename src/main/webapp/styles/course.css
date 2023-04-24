@@ -3,66 +3,48 @@
 body {
     font-family: 'Poppins';
     background-color: rgb(21, 28, 48);
-    min-height: 150vh;
 }
 
-header {
-    padding:20px;
+header, main {
+    margin-bottom: 10px;
 }
 
 
 h1 {
     text-align: center;
-    font-size: 30px;
     font-weight: bold;
-    display: block;
+    font-size: 48px;
+    padding: 20px;
     color: rgb(39, 120, 255);
     font-family: 'Orbitron', sans-serif;
 }
 
+h2, h3{
+    font-weight: bold;
+}
+
 main {
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
-    text-align: center;
-    gap: 15px;
-    margin: 30px 0;
+    gap: 1%;
+    flex-wrap: wrap;
+    width: 90%;
+    margin: 0 auto;
 }
 
-section {
-    width: 25%;
-    border-radius: 2px;
-    padding: 15px 0;
-}
-
-section img {
-    width: 128px;
-    height: 128px;
-}
-
-section h3 {
-    font-size:25px;
-    margin-bottom: 5px;
-}
-
-.atualizacao__dados {
-    margin: 10px 0;
-    text-decoration: none;
-}
-
-#button_status {
-    width: 100px;
-    height: 30px;
-    border-radius: 3px;
-}
-
-.categoria_ativa {
-    background-color: #00c86f;
-}
-
-.categoria_inativa {
+.content-course {
+    color: #FFFFFF;
+    width: 30%;
     background-color: #A3B2BF;
+    margin: 10px 0;
+    padding: 20px;
+    border-radius: 8px;
 }
+
+.content-course * {
+    margin: 6px 0;
+}
+
 
 footer {
     padding: 20px 0;

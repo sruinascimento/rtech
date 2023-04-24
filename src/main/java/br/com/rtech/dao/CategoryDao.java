@@ -33,4 +33,8 @@ public class CategoryDao {
     public Category getCategoryById(Long id) {
         return this.entityManager.find(Category.class, id);
     }
+
+    public void update(Category category) {
+        this.entityManager.merge(category);
+    }
 }
