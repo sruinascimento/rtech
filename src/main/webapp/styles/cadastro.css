@@ -1,6 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&display=swap');
+
 body {
     font-family: 'Poppins';
     background-color: rgb(21, 28, 48);
+    color: aliceblue;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 header, main {
@@ -17,30 +26,33 @@ h1 {
     font-family: 'Orbitron', sans-serif;
 }
 
-h2, h3{
-    font-weight: bold;
-}
-
 main {
-    display: flex;
-    justify-content: center;
-    gap: 1%;
-    flex-wrap: wrap;
-    width: 90%;
-    margin: 0 auto;
-}
-
-.content-course {
-    color: #FFFFFF;
-    width: 30%;
-    background-color: #A3B2BF;
-    margin: 10px 0;
-    padding: 20px;
+    padding: 2% 0.5%;
+    border: 1px solid white;
     border-radius: 8px;
 }
 
-.content-course * {
-    margin: 6px 0;
+.form {
+    display: flex;
+    flex-direction: column;
+}
+
+input {
+    margin-bottom: 15px;
+}
+
+#submit {
+    margin-top: 10px;
+    background-color: #00c86f;
+    color: #000000;
+    border-radius: 2px;
+    height: 30px;
+    font-weight: 500;
+    font-size: 18px;
+}
+
+#submit:hover {
+    cursor: pointer;
 }
 
 
@@ -71,4 +83,3 @@ footer a {
 footer a:hover {
     color: rgb(39, 170, 255);
 }
-

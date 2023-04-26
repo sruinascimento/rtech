@@ -13,7 +13,7 @@ public class HTMLCategoryPageGeneratorService {
 
     public static void generateCategoryPage(List<Category> categories, List<Course> courses, List<SubCategory> subCategories) {
 
-        try (FileWriter fw = new FileWriter("index.html")) {
+        try (FileWriter fw = new FileWriter("src/main/webapp/index.jsp")) {
             fw.write(getBeginHTML());
             for (Category category : categories) {
                 fw.write(getHTMLCategoryInfomation(category));
@@ -26,10 +26,10 @@ public class HTMLCategoryPageGeneratorService {
             }
             fw.write(getFooterHtml());
             fw.write(getEndHTML());
-            System.out.println("index.html created. Sucess \u2705");
+            System.out.println("index.jsp created. Sucess \u2705");
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
-            System.out.println("index.html was not created. Failed \u274C");
+            System.out.println("index.jsp was not created. Failed \u274C");
         }
     }
 
@@ -39,8 +39,8 @@ public class HTMLCategoryPageGeneratorService {
                 <html lang="en">
                 <head>
                     <meta charset="UTF-8">
-                    <link rel="stylesheet" href="reset.css">
-                    <link rel="stylesheet" href="style.css">
+                    <link rel="stylesheet" href="styles/reset.css">
+                    <link rel="stylesheet" href="styles/style.css">
                     <link rel="preconnect" href="https://fonts.googleapis.com">                   
                     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
                     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">

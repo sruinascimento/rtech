@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="reset.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles/reset.css">
+    <link rel="stylesheet" href="styles/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
@@ -14,7 +14,7 @@
 </head>
 <body>
      <header>
-         <h1> RTech </h1>
+         <h1> RTech - Report </h1>
      </header>
 
 
@@ -26,7 +26,21 @@
 
     </ul>
 </div>
-  <main>         <section style="background-color: #00c86f;">
+  <main>         <section style="background-color: #aa8c2B;">
+                <div class="content-banner">
+    <img src="">
+</div>
+
+            <div class="container-icon-title">
+                <img src="https://www.alura.com.br/assets/api/formacoes/categorias/512/inovacao-gestao-transparent.png">
+                <h2>Negócios</h2>
+            </div>
+            <p class="element-description-category">Agilidade. Práticas de gestão. Vendas. Liderança.</p>
+
+            
+
+        </section>
+        <section style="background-color: #00c86f;">
                 <div class="content-banner">
     <img src="https://i.imgur.com/TGd1LCW.png">
 </div>

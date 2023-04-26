@@ -13,15 +13,15 @@ public class HTMLReportGeneratorService {
     public static void generateReportPage(List<Category> categories, List<SubCategory> subCategories,
                                           List<Course> courses, List<String> nameOfSubcategoriesHasntDescription) {
 
-        try (FileWriter fw = new FileWriter("report.html")) {
+        try (FileWriter fw = new FileWriter("src/main/webapp/report.jsp")) {
             fw.write(getBeginHTML());
             fw.write(getNameSubcategoriesHasnDescriptionHTML(nameOfSubcategoriesHasntDescription));
             fw.write(getCategoryStringHtml(categories, subCategories, courses));
             fw.write(getFooterHtml());
             fw.write(getEndHTML());
-            System.out.println("report.html created. Sucess \u2705");
+            System.out.println("report.jsp created. Sucess \u2705");
         } catch (IOException e) {
-            System.out.println("report.html was not created. Failed \u274C");
+            System.out.println("report.jsp was not created. Failed \u274C");
             throw new RuntimeException(e);
 
         }
@@ -34,8 +34,8 @@ public class HTMLReportGeneratorService {
                 <html lang="en">
                 <head>
                     <meta charset="UTF-8">
-                    <link rel="stylesheet" href="reset.css">
-                    <link rel="stylesheet" href="style.css">
+                    <link rel="stylesheet" href="styles/reset.css">
+                    <link rel="stylesheet" href="styles/style.css">
                     <link rel="preconnect" href="https://fonts.googleapis.com">                   
                     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
                     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">

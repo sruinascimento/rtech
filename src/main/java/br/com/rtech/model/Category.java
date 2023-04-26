@@ -21,10 +21,10 @@ public class Category {
     private String studyGuide;
     @Column(name = "is_active")
     @Enumerated(EnumType.STRING)
-    private StateActivation active;
+    private StateActivation active = StateActivation.INATIVA;
     @NotNull
     @Column(name = "order_category")
-    private int order;
+    private Integer order;
     @Column(name = "icon_path")
     private String iconPath;
     @Column(name = "html_color_code")
@@ -108,6 +108,12 @@ public class Category {
     public void setActive(String stateActive) {
         if (stateActive.equals("ATIVA")) this.active = StateActivation.ATIVA;
         if (stateActive.equals("INATIVA")) this.active = StateActivation.INATIVA;
+    }
+
+    public void toggleCategoryStatus(String stateActive) {
+        if (stateActive.equals("ATIVA")) this.active = StateActivation.INATIVA;
+        if (stateActive.equals("INATIVA")) this.active = StateActivation.ATIVA;
+
     }
 
     public int getOrder() {
