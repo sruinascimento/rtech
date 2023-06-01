@@ -1,6 +1,9 @@
-package br.com.rsoft.rtech.controller;
+package br.com.rtech.controller;
 
-import br.com.rsoft.rtech.model.*;
+import br.com.rtech.dto.CategoryListingData;
+import br.com.rtech.dto.CourseListingData;
+import br.com.rtech.dto.SubcategoryListingData;
+import br.com.rtech.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;

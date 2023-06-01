@@ -1,7 +1,8 @@
-package br.com.rsoft.rtech.model;
+package br.com.rtech.model;
 
-import br.com.rsoft.rtech.dto.CategoryRegistrationData;
-import br.com.rsoft.rtech.validation.Validate;
+import br.com.rtech.dto.CategoryRegistrationData;
+import br.com.rtech.dto.CategoryUpdateData;
+import br.com.rtech.validation.Validate;
 import jakarta.persistence.*;
 
 @Entity
@@ -153,23 +154,6 @@ public class Category {
                 data.htmlColorCode()
         );
     }
-
-//    public void setDataCategory(CategoryRegistrationDataTest data) {
-//        this.name = data.name().trim();
-//        this.code = data.code().trim();
-//        this.description = data.description();
-//        this.studyGuide = data.studyGuide();
-//        if(data.active() != null && "on".equals(data.active())) {
-//            this.active = StateActivation.ATIVA;
-//        } else {
-//            this.active = StateActivation.INATIVA;
-//        }
-//        this.order = data.order();
-//        this.iconPath = data.iconPath();
-//        this.htmlColorCode = data.htmlColorCode();
-//
-//    }
-
 
     @Override
     public String toString() {

@@ -1,6 +1,6 @@
-package br.com.rsoft.rtech.controller;
+package br.com.rtech.controller;
 
-import br.com.rsoft.rtech.model.SubcategoryRepository;
+import br.com.rtech.model.SubcategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

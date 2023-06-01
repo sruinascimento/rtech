@@ -1,4 +1,4 @@
-package br.com.rsoft.rtech.model;
+package br.com.rtech.dto;
 
 
 import java.util.List;

@@ -1,6 +1,5 @@
-package br.com.rsoft.rtech.dto;
+package br.com.rtech.dto;
 
-import br.com.rsoft.rtech.model.StateActivation;
 import jakarta.validation.constraints.*;
 
 public record CategoryRegistrationData(

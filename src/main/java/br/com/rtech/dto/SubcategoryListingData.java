@@ -1,4 +1,6 @@
-package br.com.rsoft.rtech.model;
+package br.com.rtech.dto;
+
+import br.com.rtech.dto.CourseListingData;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package br.com.rsoft.rtech.model;
+package br.com.rtech.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;

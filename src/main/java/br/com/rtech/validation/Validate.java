@@ -1,7 +1,7 @@
-package br.com.rsoft.rtech.validation;
+package br.com.rtech.validation;
 
 
-import br.com.rsoft.rtech.model.OptionQuestion;
+import br.com.rtech.model.OptionQuestion;
 
 import java.util.Arrays;
 

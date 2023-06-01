@@ -1,4 +1,7 @@
-package br.com.rsoft.rtech.model;
+package br.com.rtech.dto;
+
+import br.com.rtech.model.Category;
+import br.com.rtech.model.StateActivation;
 
 public record CategoryUpdateData(
         Long id,

@@ -1,7 +1,7 @@
-package br.com.rsoft.rtech.dto;
+package br.com.rtech.dto;
 
-import br.com.rsoft.rtech.model.Category;
-import br.com.rsoft.rtech.model.StateActivation;
+import br.com.rtech.model.Category;
+import br.com.rtech.model.StateActivation;
 import jakarta.validation.constraints.NotBlank;
 
 public record CategoryData(

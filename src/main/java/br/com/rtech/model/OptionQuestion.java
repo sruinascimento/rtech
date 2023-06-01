@@ -1,4 +1,4 @@
-package br.com.rsoft.rtech.model;
+package br.com.rtech.model;
 
 public enum OptionQuestion {
     MULTIPLES_CHOICES("multiples choices"),

@@ -1,17 +1,16 @@
-package br.com.rsoft.rtech.controller;
+package br.com.rtech.controller;
 
-import br.com.rsoft.rtech.dto.CategoryData;
-import br.com.rsoft.rtech.model.Category;
-import br.com.rsoft.rtech.dto.CategoryRegistrationData;
-import br.com.rsoft.rtech.model.CategoryRepository;
-import br.com.rsoft.rtech.model.CategoryUpdateData;
+import br.com.rtech.dto.CategoryData;
+import br.com.rtech.model.Category;
+import br.com.rtech.dto.CategoryRegistrationData;
+import br.com.rtech.model.CategoryRepository;
+import br.com.rtech.dto.CategoryUpdateData;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
