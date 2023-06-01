@@ -1,6 +1,5 @@
 package br.com.rtech.dto;
 
-import br.com.rtech.dto.CourseListingData;
 import br.com.rtech.model.SubCategory;
 
 import java.util.List;

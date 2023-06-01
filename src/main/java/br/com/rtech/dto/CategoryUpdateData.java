@@ -1,6 +1,5 @@
 package br.com.rtech.dto;
 
-import br.com.rtech.model.Category;
 import jakarta.validation.constraints.*;
 
 public record CategoryUpdateData(

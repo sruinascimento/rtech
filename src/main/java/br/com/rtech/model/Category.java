@@ -1,6 +1,5 @@
 package br.com.rtech.model;
 
-import br.com.rtech.dto.CategoryRegistrationData;
 import br.com.rtech.validation.Validate;
 import jakarta.persistence.*;
 
