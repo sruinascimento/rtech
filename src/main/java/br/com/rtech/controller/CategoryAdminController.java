@@ -7,7 +7,6 @@ import br.com.rtech.model.CategoryRepository;
 import br.com.rtech.dto.CategoryUpdateData;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -18,8 +17,11 @@ import java.util.List;
 
 @Controller
 public class CategoryAdminController {
-    @Autowired
     private CategoryRepository categoryRepository;
+
+    public CategoryAdminController(CategoryRepository categoryRepository) {
+        this.categoryRepository = categoryRepository;
+    }
 
     @GetMapping("admin/categories")
     public ModelAndView getAdminCategories() {
