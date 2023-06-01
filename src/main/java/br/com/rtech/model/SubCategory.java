@@ -1,10 +1,8 @@
-package br.com.rtech.model;
+package br.com.rsoft.rtech.model;
 
-import br.com.rtech.validation.Validate;
-import com.sun.istack.NotNull;
-import com.sun.istack.Nullable;
+import br.com.rsoft.rtech.validation.Validate;
+import jakarta.persistence.*;
 
-import javax.persistence.*;
 
 @Entity
 @Table(name = "subcategory")
@@ -23,9 +21,8 @@ public class SubCategory  implements Comparable<SubCategory> {
     @Column(name = "is_active")
     @Enumerated(EnumType.STRING)
     private StateActivation active;
-    @NotNull
     @Column(name = "order_subcategory")
-    private int order;
+    private Integer order;
     @ManyToOne
     @JoinColumn(name = "id_category")
     private Category category;
@@ -96,7 +93,7 @@ public class SubCategory  implements Comparable<SubCategory> {
         if (stateActive.equals("INATIVA")) this.active = StateActivation.INATIVA;
     }
 
-    public int getOrder() {
+    public Integer getOrder() {
         return order;
     }
 

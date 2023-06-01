@@ -1,8 +1,8 @@
-package br.com.rtech.model;
+package br.com.rsoft.rtech.model;
 
-import br.com.rtech.validation.Validate;
+import br.com.rsoft.rtech.validation.Validate;
+import jakarta.persistence.*;
 
-import javax.persistence.*;
 
 @Entity
 @Table(name = "activity")

@@ -1,8 +1,7 @@
-package br.com.rtech.model;
+package br.com.rsoft.rtech.model;
 
-import br.com.rtech.validation.Validate;
-
-import javax.persistence.*;
+import br.com.rsoft.rtech.validation.Validate;
+import jakarta.persistence.*;
 
 
 @Entity

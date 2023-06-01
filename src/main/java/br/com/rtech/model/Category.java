@@ -1,9 +1,8 @@
-package br.com.rtech.model;
+package br.com.rsoft.rtech.model;
 
-import br.com.rtech.validation.Validate;
-import com.sun.istack.NotNull;
-
-import javax.persistence.*;
+import br.com.rsoft.rtech.dto.CategoryRegistrationData;
+import br.com.rsoft.rtech.validation.Validate;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "category")
@@ -14,7 +13,7 @@ public class Category {
     @Column(name = "name_category")
     private String name;
     @Column(name = "code_category")
-    private  String code;
+    private String code;
     @Column(name = "description_category")
     private String description;
     @Column(name = "study_guide")
@@ -22,7 +21,7 @@ public class Category {
     @Column(name = "is_active")
     @Enumerated(EnumType.STRING)
     private StateActivation active = StateActivation.INATIVA;
-    @NotNull
+
     @Column(name = "order_category")
     private Integer order;
     @Column(name = "icon_path")
@@ -32,7 +31,7 @@ public class Category {
 
     public Category(String name, String code) {
         Validate.validateText(name, "[a-zA-Zç\\sáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ:]{3,}", ErrorMessage.CATEGORY_NAME.getMessage());
-        Validate.validateText(code, "[a-z0-9]+[a-z-0-9]*[a-z0-9]",ErrorMessage.CATEGORY_CODE.getMessage());
+        Validate.validateText(code, "[a-z0-9]+[a-z-0-9]*[a-z0-9]", ErrorMessage.CATEGORY_CODE.getMessage());
         this.name = name;
         this.code = code;
     }
@@ -56,6 +55,7 @@ public class Category {
         Validate.validateText(htmlColorCode, "#[A-Fa-f0-9]{6}", ErrorMessage.HTML_COLOR_CODE.getMessage());
         this.htmlColorCode = htmlColorCode;
     }
+
     public Long getId() {
         return id;
     }
@@ -116,7 +116,7 @@ public class Category {
 
     }
 
-    public int getOrder() {
+    public Integer getOrder() {
         return order;
     }
 
@@ -125,6 +125,51 @@ public class Category {
             this.order = (Integer.parseInt(order));
         }
     }
+
+
+    public void setDataCategory(CategoryRegistrationData data) {
+        this.name = data.name().trim();
+        this.code = data.code().trim();
+        this.description = data.description();
+        this.studyGuide = data.studyGuide();
+        if(data.active() != null && "on".equals(data.active())) {
+            this.active = StateActivation.ATIVA;
+        } else {
+            this.active = StateActivation.INATIVA;
+        }
+        this.order = data.order();
+        this.iconPath = data.iconPath();
+        this.htmlColorCode = data.htmlColorCode();
+    }
+
+    public void setDataCategory(CategoryUpdateData data) {
+        setDataFromCategoryDto(data.name(),
+                data.code(),
+                data.description(),
+                data.studyGuide(),
+                data.active(),
+                data.order(),
+                data.iconPath(),
+                data.htmlColorCode()
+        );
+    }
+
+//    public void setDataCategory(CategoryRegistrationDataTest data) {
+//        this.name = data.name().trim();
+//        this.code = data.code().trim();
+//        this.description = data.description();
+//        this.studyGuide = data.studyGuide();
+//        if(data.active() != null && "on".equals(data.active())) {
+//            this.active = StateActivation.ATIVA;
+//        } else {
+//            this.active = StateActivation.INATIVA;
+//        }
+//        this.order = data.order();
+//        this.iconPath = data.iconPath();
+//        this.htmlColorCode = data.htmlColorCode();
+//
+//    }
+
 
     @Override
     public String toString() {
@@ -139,5 +184,17 @@ public class Category {
                 ", iconPath='" + iconPath + '\'' +
                 ", htmlColorCode='" + htmlColorCode + '\'' +
                 '}';
+    }
+
+    private void setDataFromCategoryDto(String name, String code, String description, String studyGuide,
+                                        StateActivation active, Integer order, String iconPath, String htmlColorCode) {
+        this.name = name.trim();
+        this.code = code.trim();
+        this.description = description.trim();
+        this.studyGuide = studyGuide.trim();
+        this.active = active;
+        this.order = order;
+        this.iconPath = iconPath.trim();
+        this.htmlColorCode = htmlColorCode.trim();
     }
 }
