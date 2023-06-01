@@ -1,7 +1,6 @@
 package br.com.rtech.model;
 
 import br.com.rtech.dto.CategoryRegistrationData;
-import br.com.rtech.dto.CategoryUpdateData;
 import br.com.rtech.validation.Validate;
 import jakarta.persistence.*;
 
@@ -38,6 +37,17 @@ public class Category {
     }
 
     public Category() {
+    }
+
+    public Category(String name, String code, String description, String studyGuide, String active, Integer order, String iconPath, String htmlColorCode) {
+        this.name = name;
+        this.code = code;
+        this.description = description;
+        this.studyGuide = studyGuide;
+        this.active = "on".equals(active) ? StateActivation.ATIVA : StateActivation.INATIVA;
+        this.order = order;
+        this.iconPath = iconPath;
+        this.htmlColorCode = htmlColorCode;
     }
 
     public String getIconPath() {
@@ -107,8 +117,11 @@ public class Category {
 
 
     public void setActive(String stateActive) {
-        if (stateActive.equals("ATIVA")) this.active = StateActivation.ATIVA;
-        if (stateActive.equals("INATIVA")) this.active = StateActivation.INATIVA;
+        if (StateActivation.ATIVA.toString().equals(stateActive) || "on".equals(stateActive)) {
+            this.active = StateActivation.ATIVA;
+        } else {
+            this.active = StateActivation.INATIVA;
+        }
     }
 
     public void toggleCategoryStatus(String stateActive) {
@@ -127,32 +140,8 @@ public class Category {
         }
     }
 
-
-    public void setDataCategory(CategoryRegistrationData data) {
-        this.name = data.name().trim();
-        this.code = data.code().trim();
-        this.description = data.description();
-        this.studyGuide = data.studyGuide();
-        if(data.active() != null && "on".equals(data.active())) {
-            this.active = StateActivation.ATIVA;
-        } else {
-            this.active = StateActivation.INATIVA;
-        }
-        this.order = data.order();
-        this.iconPath = data.iconPath();
-        this.htmlColorCode = data.htmlColorCode();
-    }
-
-    public void setDataCategory(CategoryUpdateData data) {
-        setDataFromCategoryDto(data.name(),
-                data.code(),
-                data.description(),
-                data.studyGuide(),
-                data.active(),
-                data.order(),
-                data.iconPath(),
-                data.htmlColorCode()
-        );
+    public void setOrder(Integer order) {
+        this.order = order;
     }
 
     @Override

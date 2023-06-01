@@ -1,5 +1,6 @@
 package br.com.rtech.dto;
 
+import br.com.rtech.model.Category;
 import jakarta.validation.constraints.*;
 
 public record CategoryRegistrationData(
@@ -13,7 +14,19 @@ public record CategoryRegistrationData(
         @Min(1) @Max(20)
         Integer order,
         String iconPath,
-        @Pattern(regexp = "#[0-9a-fA-F]{6}", message = "código deve ser em hexadecimal")
+        @Pattern(regexp = "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$", message = "código deve ser em hexadecimal")
         String htmlColorCode
 ) {
+
+        public Category toCategory() {
+                return new Category(name(),
+                        code(),
+                        description(),
+                        studyGuide(),
+                        active(),
+                        order(),
+                        iconPath(),
+                        htmlColorCode());
+        }
+
 }

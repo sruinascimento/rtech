@@ -36,7 +36,7 @@
                 <td>${category.code()}</td>
                 <td>${category.active()}</td>
                 <td>
-                    <a href="/admin/subcategories/${category.id()}" class="decoracao-hiperlink " target="_blank">Subcategorias</a>
+                    <a href="/admin/subcategories/${category.code()}" class="decoracao-hiperlink " target="_blank">Subcategorias</a>
                 </td>
                 <td>
                     <a href="/admin/categories/${category.code()}" class="btn btn-default active" target="_blank">Editar</a>

@@ -1,10 +1,12 @@
 package br.com.rtech.controller;
 
 import br.com.rtech.dto.CategoryData;
+import br.com.rtech.dto.CategoryUpdateData;
 import br.com.rtech.model.Category;
 import br.com.rtech.dto.CategoryRegistrationData;
 import br.com.rtech.model.CategoryRepository;
-import br.com.rtech.dto.CategoryUpdateData;
+import br.com.rtech.dto.FormCategoryData;
+import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.http.MediaType;
@@ -51,10 +53,8 @@ public class CategoryAdminController {
         if (bindingResult.hasErrors()) {
             return "cadastro-categoria";
         }
-        Category category = new Category();
-        category.setDataCategory(data);
+        Category category = data.toCategory();
         categoryRepository.save(category);
-
         return "redirect:/admin/categories";
 
     }
@@ -63,23 +63,31 @@ public class CategoryAdminController {
     public ModelAndView getCategoryByCode(@PathVariable String code) {
         ModelAndView modelAndView = new ModelAndView("altera-categoria");
         Category category = categoryRepository.findCategoriesByCode(code);
-        modelAndView.addObject("category", CategoryUpdateData.createWithCategoryClass(category));
+        modelAndView.addObject("category", new FormCategoryData(category));
         return modelAndView;
     }
 
     @PostMapping(value = "admin/categories/{code}", consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_FORM_URLENCODED_VALUE})
     @Transactional
-    public String updateCategoryByCode(@PathVariable String code, @ModelAttribute("data") @Valid CategoryRegistrationData data, BindingResult bindingResult) {
-
+    public String updateCategoryByCode(@PathVariable String code, @ModelAttribute("data") CategoryUpdateData data, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return "altera-categoria";
         }
+        try{
+            Category category = categoryRepository.getReferenceById(data.id());
 
-        System.out.println("POST" + data);
-        Category category = categoryRepository.findCategoriesByCode(code);
-        category.setDataCategory(data);
-        categoryRepository.save(category);
-        return "redirect:/admin/categories";
+            category.setName(data.name());
+            category.setDescription(data.description());
+            category.setActive(data.active());
+            category.setOrder(data.order());
+            category.setIconPath(data.iconPath());
+            category.setIconPath(data.iconPath());
+            categoryRepository.save(category);
+
+            return "redirect:/admin/categories";
+        } catch (EntityNotFoundException ex) {
+            throw new RuntimeException(ex);
+        }
 
     }
 }
