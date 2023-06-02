@@ -1,6 +1,6 @@
 package br.com.rtech.validation;
 
-import br.com.rtech.model.ErrorMessage;
+
 import br.com.rtech.model.OptionQuestion;
 
 import java.util.Arrays;

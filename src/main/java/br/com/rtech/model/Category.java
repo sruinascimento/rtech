@@ -1,9 +1,7 @@
 package br.com.rtech.model;
 
 import br.com.rtech.validation.Validate;
-import com.sun.istack.NotNull;
-
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "category")
@@ -14,7 +12,7 @@ public class Category {
     @Column(name = "name_category")
     private String name;
     @Column(name = "code_category")
-    private  String code;
+    private String code;
     @Column(name = "description_category")
     private String description;
     @Column(name = "study_guide")
@@ -22,7 +20,7 @@ public class Category {
     @Column(name = "is_active")
     @Enumerated(EnumType.STRING)
     private StateActivation active = StateActivation.INATIVA;
-    @NotNull
+
     @Column(name = "order_category")
     private Integer order;
     @Column(name = "icon_path")
@@ -32,12 +30,23 @@ public class Category {
 
     public Category(String name, String code) {
         Validate.validateText(name, "[a-zA-Zç\\sáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ:]{3,}", ErrorMessage.CATEGORY_NAME.getMessage());
-        Validate.validateText(code, "[a-z0-9]+[a-z-0-9]*[a-z0-9]",ErrorMessage.CATEGORY_CODE.getMessage());
+        Validate.validateText(code, "[a-z0-9]+[a-z-0-9]*[a-z0-9]", ErrorMessage.CATEGORY_CODE.getMessage());
         this.name = name;
         this.code = code;
     }
 
     public Category() {
+    }
+
+    public Category(String name, String code, String description, String studyGuide, String active, Integer order, String iconPath, String htmlColorCode) {
+        this.name = name;
+        this.code = code;
+        this.description = description;
+        this.studyGuide = studyGuide;
+        this.active = "on".equals(active) ? StateActivation.ATIVA : StateActivation.INATIVA;
+        this.order = order;
+        this.iconPath = iconPath;
+        this.htmlColorCode = htmlColorCode;
     }
 
     public String getIconPath() {
@@ -56,6 +65,7 @@ public class Category {
         Validate.validateText(htmlColorCode, "#[A-Fa-f0-9]{6}", ErrorMessage.HTML_COLOR_CODE.getMessage());
         this.htmlColorCode = htmlColorCode;
     }
+
     public Long getId() {
         return id;
     }
@@ -106,8 +116,11 @@ public class Category {
 
 
     public void setActive(String stateActive) {
-        if (stateActive.equals("ATIVA")) this.active = StateActivation.ATIVA;
-        if (stateActive.equals("INATIVA")) this.active = StateActivation.INATIVA;
+        if (StateActivation.ATIVA.toString().equals(stateActive) || "on".equals(stateActive)) {
+            this.active = StateActivation.ATIVA;
+        } else {
+            this.active = StateActivation.INATIVA;
+        }
     }
 
     public void toggleCategoryStatus(String stateActive) {
@@ -116,7 +129,7 @@ public class Category {
 
     }
 
-    public int getOrder() {
+    public Integer getOrder() {
         return order;
     }
 
@@ -124,6 +137,10 @@ public class Category {
         if (order != null && !order.trim().equals("")) {
             this.order = (Integer.parseInt(order));
         }
+    }
+
+    public void setOrder(Integer order) {
+        this.order = order;
     }
 
     @Override
@@ -139,5 +156,17 @@ public class Category {
                 ", iconPath='" + iconPath + '\'' +
                 ", htmlColorCode='" + htmlColorCode + '\'' +
                 '}';
+    }
+
+    private void setDataFromCategoryDto(String name, String code, String description, String studyGuide,
+                                        StateActivation active, Integer order, String iconPath, String htmlColorCode) {
+        this.name = name.trim();
+        this.code = code.trim();
+        this.description = description.trim();
+        this.studyGuide = studyGuide.trim();
+        this.active = active;
+        this.order = order;
+        this.iconPath = iconPath.trim();
+        this.htmlColorCode = htmlColorCode.trim();
     }
 }

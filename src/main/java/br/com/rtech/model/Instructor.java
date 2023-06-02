@@ -1,8 +1,7 @@
 package br.com.rtech.model;
 
 import br.com.rtech.validation.Validate;
-
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "instructor")
